@@ -1,8 +1,8 @@
 theme: plainwhite
 
-title: Your awesome title
-author: GitHub User
-email: your-email@domain.com
+title: 초슬로그 🎯
+author: chowisely
+email: potress7@gmail.com
 description: > # this means to ignore newlines until "show_exerpts:"
   Write an awesome description for your new site here. You can edit this
   line in _config.yml. It will appear in your document head meta (for
@@ -14,13 +14,14 @@ show_excerpts: true # set to true to show excerpts on the homepage
 sass:
   sass_dir: _sass
 plainwhite:
-  name: Adam Denisov
-  tagline: Developer. Designer
+  analytics_id: "G-SGMF6NV0B4"
+  name: chowisely
+  tagline: undergraduate in CS
   date_format: "%b %-d, %Y"
   sitemap: true # set to true to generate sitemap.xml content
   search: true # set to true to enable searchbar
   dark_mode: true # set to true to add dark mode toggle
-  portfolio_image: "assets/portfolio.png" # the path from the base directory of the site to the image to display (no / at the start)
+  portfolio_image: "assets/profile1.png" # the path from the base directory of the site to the image to display (no / at the start)
   html_lang: "en" # set the lang attribute of the <html> tag for the pages. See here for a list of codes: https://www.w3schools.com/tags/ref_country_codes.asp
   condensed_mobile:
     #- home
@@ -28,9 +29,9 @@ plainwhite:
     - post
   # generate social links in footer
   social_links:
-    twitter: samarsault
-    github:  samarsault
-    linkedIn: in/samarsault
+    twitter: 
+    github:  chowisely
+    linkedIn: 
     #rss: rss
     #dribbble: jekyll
     #flickr:   jekyll
@@ -60,4 +61,11 @@ theme: plainwhite
 
 plugins:
   - jekyll-seo-tag
-#  - jekyll-feed
+#- jekyll-feed
+
+
+highlighter: rouge
+language: 'en-uk'
+
+#url: localhost:3000
+url: https://chowisely.github.io

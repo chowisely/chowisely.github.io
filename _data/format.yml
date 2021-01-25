@@ -1,6 +1,9 @@
-algorithm: Algorithm
+알고리즘: 알고리즘
 sort: Sort
 greedy: Greedy
 dfs: DFS
 bfs: BFS
+MST: MST
+union-find: Union-Find
 architecture: Architecture
+algorithm: Algorithm

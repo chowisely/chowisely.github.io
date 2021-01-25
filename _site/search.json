@@ -1,0 +1,111 @@
+[
+  
+    {
+      "title"    : "[Architecture] Summary",
+      "title-lower"    : "[architecture] summary",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "",
+      "tags"     : "architecture",
+      "url"      : "/2020/10/10/ComputerArchitecture-Summary.html",
+      "date"     : "2020-10-10 11:30:00 +0900",
+      "content"     : "Computer Architecture SummaryBackgroundMoore의 법칙반도체 칩에 들어가는 트랜지스터의 수는 매년 지수적으로 증가한다. (미세화의 한계로 이제는 적용되지 X)Amdahl의 법칙Performance = 1 / ((1 - P) + P / S)(P=전체에서 개선된 부분이 차지하는 비율, S=이전에 비해 성능이 향상한 정도)컴..."
+    } ,
+  
+    {
+      "title"    : "[Architecture] Virtualization",
+      "title-lower"    : "[architecture] virtualization",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "",
+      "tags"     : "architecture",
+      "url"      : "/2020/10/07/ComputerArchitecture-MemoryHierarchy.html",
+      "date"     : "2020-10-07 11:30:00 +0900",
+      "content"     : "메모리 계층 구조에 대해 알아보자.Memory Hierarchy만약 속도가 빠르고, 크기가 크고, 가격이 싼 메모리를 개발할 수 있는 기술이 있다면 메모리 계층 구조(memory hierarchy) 개념이 등장하지 않았을 것이다. 하지만 일반적으로 속도가 빠르면 가격이 비싸지고, 크기가 커지면 속도가 느려지는 메모리의 한계점을 해결하지 못한다. 따라서..."
+    } ,
+  
+    {
+      "title"    : "[Architecture] MIPS &amp; Datapath &amp; Hazard",
+      "title-lower"    : "[architecture] mips &amp; datapath &amp; hazard",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "",
+      "tags"     : "architecture",
+      "url"      : "/2020/10/06/ComputerArchitecture-MIPSDatapathHazard.html",
+      "date"     : "2020-10-06 12:00:00 +0900",
+      "content"     : "몇 가지의 datapath와 그에 관련한 hazard를 알아보자.Procedure Calling프로시저를 부르는 곳을 caller, 호출되는 프로시저를 callee라고 한다. caller와 callee 모두 같은 레지스터를 사용하기 때문에 서로의 레지스터 값을 보호하기 위해 두 가지 방법이 사용된다.Caller Save vs. Callee SaveCa..."
+    } ,
+  
+    {
+      "title"    : "[Architecture] Performance",
+      "title-lower"    : "[architecture] performance",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "",
+      "tags"     : "architecture",
+      "url"      : "/2020/10/06/ComputerArchitecture-Performance.html",
+      "date"     : "2020-10-06 11:30:00 +0900",
+      "content"     : "컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자.PerformanceTimewall-clock time, response time, elapsed time, CPU timeCPU TimeCPU Time = CPU time spent for a given program= Cycles/Program (=Clock Cycles) * Seconds/..."
+    } ,
+  
+    {
+      "title"    : "[Architecture] Virtualization",
+      "title-lower"    : "[architecture] virtualization",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "",
+      "tags"     : "architecture",
+      "url"      : "/2020/10/05/ComputerArchitecture-Virtualization.html",
+      "date"     : "2020-10-05 11:30:00 +0900",
+      "content"     : "“반도체 칩에 들어가는 트랜지스터의 수는 시간의 흐름에 따라 지수적으로 증가했다. 하지만 CPU에서는 performance, DRAM에서는 capacity를 높이는 용도로 서로의 지향점이 달랐다. 이는 결국 CPU와 DRAM의 속도 차이를 야기했고, 이 간격을 메우기 위해 캐시가 등장했다.”“트랜지스터가 작아짐에 따라 reliability가 떨어진다...."
+    } ,
+  
+    {
+      "title"    : "[Algorithm] Sorting - Shortest Path",
+      "title-lower"    : "[algorithm] sorting - shortest path",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "",
+      "tags"     : "algorithm, sort",
+      "url"      : "/2020/08/29/Algorithm-ShortestPath.html",
+      "date"     : "2020-08-29 13:00:00 +0900",
+      "content"     : "이 글에서 다룰 최단 거리를 구하는 알고리즘은 두 가지 종류로 나눌 수 있다.      Single Source Shortest Path: 모든 정점의 집합을 V라고 했을 때, 주어진 정점 s ∈ V에 대하여 모든 정점 t ∈ V로 가는 거리를 구한다.    All Pairs Shortest Path: 모든 정점 s ∈ V에 대하여 모든 정점 t ∈ ..."
+    } ,
+  
+    {
+      "title"    : "[Algorithm] Sorting - Time Complexity O(N)",
+      "title-lower"    : "[algorithm] sorting - time complexity o(n)",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "",
+      "tags"     : "algorithm, sort",
+      "url"      : "/2020/08/29/Algorithm-Sorting3.html",
+      "date"     : "2020-08-29 12:30:00 +0900",
+      "content"     : "Counting Sort특이하게도 counting sort는 정렬 알고리즘이지만 비교 연산을 하지 않는다. 이름처럼 해당 숫자를 ‘카운팅’할 뿐이다. 정렬하고자 하는 숫자들의 범위가 주어져야 하는 것이 조건이다.[3,2,2,1,4,1] (4 이하의 음이 아닌 정수들이라는 조건이 미리 주어진다.)각 숫자의 값들을 인덱스라고 하고, 해당하는 인덱스에 위치..."
+    } ,
+  
+    {
+      "title"    : "[Algorithm] Sorting - Time Complexity O(NlogN)",
+      "title-lower"    : "[algorithm] sorting - time complexity o(nlogn)",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "",
+      "tags"     : "algorithm, sort",
+      "url"      : "/2020/08/29/Algorithm-Sorting2.html",
+      "date"     : "2020-08-29 12:00:00 +0900",
+      "content"     : "지난 글에 이어서 이번 글은 시간 복잡도가 O(NlogN)인 알고리즘을 정리해보았다.Quick SortQuick sort가 시간 복잡도를 NlogN으로 줄일 수 있는 이유는 Divide and Conquer 접근법을 이용했기 때문이다. (Divide and Conquer 접근법이란 큰 문제를 여러 하위 문제로 쪼개고, 각 문제의 솔루션들을 구해서 하나..."
+    } ,
+  
+    {
+      "title"    : "[Algorithm] Sorting - Time Complexity O(N^2)",
+      "title-lower"    : "[algorithm] sorting - time complexity o(n^2)",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "",
+      "tags"     : "algorithm, sort",
+      "url"      : "/2020/08/29/Algorithm-Sorting1.html",
+      "date"     : "2020-08-29 11:30:00 +0900",
+      "content"     : "알고리즘 수업을 들은지 1년이 지났지만 여러 정렬 알고리즘을 아직까지 제대로 모른다는 생각이 들었다. 이번을 기회로 삼아 7가지 정렬 알고리즘을 공부했고, 시간 복잡도가 높은 순서대로 정리해보았다.(* 모든 정렬은 오름차순을 기준이다.)Selection Sort배열에 나열된 요소를 쭉 훑어 가장 작은 수를 찾아내고 그것을 앞으로 보내는 것이다. 이 과..."
+    } 
+  
+]

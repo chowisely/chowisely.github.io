@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[Algorithm] Sorting - Time Complexity O(N^2)</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Algorithm] Sorting - Time Complexity O(N^2) | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[Algorithm] Sorting - Time Complexity O(N^2)" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="알고리즘 수업을 들은지 1년이 지났지만 여러 정렬 알고리즘을 아직까지 제대로 모른다는 생각이 들었다. 이번을 기회로 삼아 7가지 정렬 알고리즘을 공부했고, 시간 복잡도가 높은 순서대로 정리해보았다." />
+<meta property="og:description" content="알고리즘 수업을 들은지 1년이 지났지만 여러 정렬 알고리즘을 아직까지 제대로 모른다는 생각이 들었다. 이번을 기회로 삼아 7가지 정렬 알고리즘을 공부했고, 시간 복잡도가 높은 순서대로 정리해보았다." />
+<link rel="canonical" href="https://chowisely.github.io/2020/08/29/Algorithm-Sorting1.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/08/29/Algorithm-Sorting1.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-29T11:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Algorithm] Sorting - Time Complexity O(N^2)" />
+<script type="application/ld+json">
+{"headline":"[Algorithm] Sorting - Time Complexity O(N^2)","url":"https://chowisely.github.io/2020/08/29/Algorithm-Sorting1.html","dateModified":"2020-08-29T11:30:00+09:00","datePublished":"2020-08-29T11:30:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/08/29/Algorithm-Sorting1.html"},"author":{"@type":"Person","name":"chowisely"},"description":"알고리즘 수업을 들은지 1년이 지났지만 여러 정렬 알고리즘을 아직까지 제대로 모른다는 생각이 들었다. 이번을 기회로 삼아 7가지 정렬 알고리즘을 공부했고, 시간 복잡도가 높은 순서대로 정리해보았다.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <h4>TAGS</h4>
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+      </div>
+
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/2020/08/29/Algorithm-Sorting1.html">
+    <h2 class="post-title">[Algorithm] Sorting - Time Complexity O(N^2)</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Aug 29, 2020</div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="algorithm">Algorithm</span>
+          
+        
+          
+              <span class="tag" data-tag="sort">Sort</span>
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <p>알고리즘 수업을 들은지 1년이 지났지만 여러 정렬 알고리즘을 아직까지 제대로 모른다는 생각이 들었다. 이번을 기회로 삼아 7가지 정렬 알고리즘을 공부했고, 시간 복잡도가 높은 순서대로 정리해보았다.</p>
+
+<p>(* 모든 정렬은 오름차순을 기준이다.)</p>
+
+<hr />
+
+<h3 id="selection-sort">Selection Sort</h3>
+<p>배열에 나열된 요소를 쭉 훑어 가장 작은 수를 찾아내고 그것을 앞으로 보내는 것이다. 이 과정을 배열의 길이 N만큼 반복한다.</p>
+
+<p>배열 {4,3,2,1}을 예로 들자.
+첫번째 반복문에서는 인덱스 0부터 3까지를 훑고 가장 작은 수 1을 찾아 앞으로 보낸다.
+-&gt;{1,4,3,2}
+두번째 반복문에서는 인덱스 1부터 3까지를 훑고 가장 작은 수 2를 찾아 1의 뒷자리로 보낸다.
+-&gt;{1,2,4,3}
+세번째 반복문도 위와 같이 진행한다면 결과는 {1,2,3,4}가 됨을 알 수 있다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
+	<span class="kt">int</span> <span class="n">min</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tmp</span><span class="p">;</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">min</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+		<span class="n">idx</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">min</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="p">{</span>
+				<span class="n">min</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+				<span class="n">idx</span> <span class="o">=</span> <span class="n">j</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="c1">// swap</span>
+		<span class="n">tmp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+		<span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+		<span class="n">arr</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="bubble-sort">Bubble Sort</h3>
+<p>배열의 각 요소를 자기자신 바로 옆에 있는 요소와 비교하여 큰 것을 뒤로(인덱스가 커지는 방향으로) 바꿔주는 방법이다. 이 과정을 배열의 길이 N만큼 반복한다.</p>
+
+<p>배열 {4,3,2,1}을 예로 들자.
+첫번째 반복문에서는 4와 3을 비교해서 둘의 위치를 바꿔주고, 4와 2를 비교해서 둘의 위치를 다시 바꿔주고, 4와 1을 비교하여 위치를 바꿔준다.
+-&gt;{3,2,1,4}
+두번째, 세번째 반복문도 각각 인덱스 1,2부터 시작해서 위의 과정을 거친다면 오름차순으로 정렬되는 것을 알 수 있다.</p>
+
+<p>여기서 주목할 점은 swap 연산을 무지하게 많이 해서 같은 시간 복잡도를 가지고 있는 다른 알고리즘 보다 성능이 조금 떨어진다는 거다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
+	<span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+				<span class="n">tmp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+				<span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+				<span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="insertion-sort">Insertion Sort</h3>
+<p>정렬하고자 하는 배열의 요소를 적절한 위치에 삽입하는 방법이다.
+arr[k] (k&gt;=0)를 [0,k-1] 범위의 적절한 위치에 넣어준다. 이것을 0부터 배열의 길이 N만큼 반복한다.</p>
+
+<p>배열 {4,3,2,1}을 예로 들자.
+첫번째 반복문에서는 인덱스 0번째의 4를 [0,0] 내의 적절한 위치에 삽입시켜야 하지만 자기자신 뿐이므로 반복문을 끝낸다.
+-&gt;{4,3,2,1}
+두번째 반복문에서는 인덱스 1번째의 3을 [0,1] 내의 적절한 위치에 삽입시켜야 하는데, 3이 4보다 작으므로 둘의 위치를 바꿔준다.
+-&gt;{3,4,2,1}
+세번째 반복문에서는 인덱스 2번째의 2을 [0,2] 내의 적절한 위치에 삽입시키면 3의 앞으로 이동시켜주면 된다.
+-&gt;{2,3,4,1}
+네번째 반복문에서도 인덱스 3번째에 대해 똑같은 방법을 적용하면 오름차순으로 정렬됨을 알 수 있다.</p>
+
+<p>여기서 주목할 점은 [0,k-1]의 배열의 요소들은 이미 정렬이 된 상태라는 것이다.
+즉, 적절한 위치를 찾아주면 더이상 볼 필요 없이 그 위치에서 다음 반복문으로 넘어가면 된다.
+예시가 이미 내림차순으로 정렬된 배열을 오름차순으로 바꾸는 것이라, 계산 횟수는 다른 정렬들과 크게 다를 바가 없어 보인다.
+하지만 [2,3,4,1]과 같은 배열의 경우 2~4는 이미 정렬되어 있으므로 1의 위치만 앞으로 이동시켜주면 정렬이 끝난다.
+이러한 점에서 대부분의 경우 같은 시간 복잡도를 가지는 정렬 알고리즘 보다 성능이 조금 더 좋다고 할 수 있다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">};</span>
+	<span class="kt">int</span> <span class="n">tmp</span><span class="p">;</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+				<span class="n">tmp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+				<span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+				<span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p> </p>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  --><div id="disqus_thread" style="margin-top:25px"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'https://chowisely.github.io/2020/08/29/Algorithm-Sorting1.html';
+      this.page.identifier = 'https://chowisely.github.io/2020/08/29/Algorithm-Sorting1.html';
+    };
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://chowisely.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+      powered by Disqus.</a></noscript></div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->

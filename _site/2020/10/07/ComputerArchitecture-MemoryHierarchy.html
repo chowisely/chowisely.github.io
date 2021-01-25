@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[Architecture] Virtualization</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Architecture] Virtualization | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[Architecture] Virtualization" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="메모리 계층 구조에 대해 알아보자." />
+<meta property="og:description" content="메모리 계층 구조에 대해 알아보자." />
+<link rel="canonical" href="https://chowisely.github.io/2020/10/07/ComputerArchitecture-MemoryHierarchy.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/10/07/ComputerArchitecture-MemoryHierarchy.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-07T11:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Architecture] Virtualization" />
+<script type="application/ld+json">
+{"headline":"[Architecture] Virtualization","url":"https://chowisely.github.io/2020/10/07/ComputerArchitecture-MemoryHierarchy.html","dateModified":"2020-10-07T11:30:00+09:00","datePublished":"2020-10-07T11:30:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/10/07/ComputerArchitecture-MemoryHierarchy.html"},"author":{"@type":"Person","name":"chowisely"},"description":"메모리 계층 구조에 대해 알아보자.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <h4>TAGS</h4>
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+      </div>
+
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/2020/10/07/ComputerArchitecture-MemoryHierarchy.html">
+    <h2 class="post-title">[Architecture] Virtualization</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Oct 7, 2020</div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="architecture">Architecture</span>
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <p>메모리 계층 구조에 대해 알아보자.</p>
+
+<h2 id="memory-hierarchy">Memory Hierarchy</h2>
+<p>만약 속도가 빠르고, 크기가 크고, 가격이 싼 메모리를 개발할 수 있는 기술이 있다면 메모리 계층 구조(memory hierarchy) 개념이 등장하지 않았을 것이다. 하지만 일반적으로 속도가 빠르면 가격이 비싸지고, 크기가 커지면 속도가 느려지는 메모리의 한계점을 해결하지 못한다. 따라서 메모리를 하나의 계층 구조로 나타낼 수 있는데, 빠른 속도, 싼 가격, 작은 크기를 가질수록 메모리의 상위 계층에 존재한다.</p>
+
+<p>CPU &lt; Cache Memory &lt; Main Memory &lt; Secondary Storage
+RAM은 휘발성 메모리로 전원이 꺼지면 저장된 내용이 소실된다. Cache Memory는 SRAM, Main Memory는 DRAM을 사용한다.
+ROM은 비휘발성 메모리로 전원이 꺼져도 저장된 내용이 유지된다.
+(OS에서 main memory는 RAM과 부트로더가 담긴 ROM으로 이루어져 있다고 배웠기 때문에 혼동됐다. 찾아보니 일반적으로 main memory를 가리킬 때는 ROM을 포함하지 않는다고 한다.)</p>
+
+<h3 id="cache-memory">Cache Memory</h3>
+<p>속도가 빠르고, 크기가 크고, 가격이 싼 메모리 있는 illusion을 심어준다. 메모리 접근 패턴에 locality 특성이 있기 때문에 가능하다.</p>
+
+<p>CPU와 메모리 사이에 CPU 캐시가 생기면서 메모리 접근이 줄어듦에 따라 시스템 버스는 I/O 연산에 더 많은 시간을 할애할 수 있다.</p>
+
+<h4 id="cache-hit">Cache Hit</h4>
+<p>찾고자 하는 데이터가 캐시에 존재할 때를 가리킨다.
+Hit Ratio: 캐시에서 데이터를 찾은 횟수/전체 데이터 접근 횟수
+Hit Time: 캐시에서 데이터를 가져오는 데 걸리는 시간</p>
+
+<h4 id="cache-miss">Cache Miss</h4>
+<p>찾고자 하는 데이터가 캐시에 존재하지 않아 아래 계층에서 가져와야 할 때를 가리킨다.
+Miss Ratio: 1 - Hit Ratio
+Miss Penalty: 아래 계층에서 데이터를 가져오는 시간 + 캐시에서 기존의 데이터를 가져온 데이터로 교체하는 시간</p>
+
+<blockquote>
+  <p>🔎 <strong>Average Memory Access Time</strong></p>
+
+  <p>Average Memory Access Time = Hit Time + Miss Penalty * Miss Ratio</p>
+</blockquote>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  --><div id="disqus_thread" style="margin-top:25px"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'https://chowisely.github.io/2020/10/07/ComputerArchitecture-MemoryHierarchy.html';
+      this.page.identifier = 'https://chowisely.github.io/2020/10/07/ComputerArchitecture-MemoryHierarchy.html';
+    };
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://chowisely.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+      powered by Disqus.</a></noscript></div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->

@@ -456,7 +456,7 @@ main .about .about-header .about-title { display: flex; flex-direction: column; 
 
 .post-title { line-height: 1.2em; font-size: 28px; margin-bottom: 10px; }
 
-.posts, .post-container { list-style-type: none; margin: 45px 30px; }
+.posts, .post-container { list-style-type: none; margin: 45px 80px; }
 
 @media screen and (max-width: 480px) { .posts, .post-container { margin-left: 20px; margin-right: 20px; } }
 

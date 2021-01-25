@@ -10,7 +10,7 @@ sitemap:
       "title-lower"    : "{{ post.title | escape | downcase}}",
       "sub-titile" : "{{ post.subtitle | escape }}",
       "sub-titile-lower" : "{{ post.subtitle | escape | downcase}}",
-      "categories" : "{{ post.categories }}",
+      "categories" : "{{ post.tags }}",
       "tags"     : "{{ post.tags | join: ', ' }}",
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "date"     : "{{ post.date }}",

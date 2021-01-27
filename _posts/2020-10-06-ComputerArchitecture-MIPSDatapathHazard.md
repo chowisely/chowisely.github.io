@@ -16,6 +16,7 @@ comments: true
 ### Caller Save vs. Callee Save
 
 Caller Save: 나중에 사용될 레지스터들(live register)만 따로 저장한 후에 callee를 호출한다.
+
 Callee Save: 프로시저를 실행하며 변경할 레지스터들만 따로 저장한다.
 
 return address(\$ra), argument(\$a0~\$a3), return value(\$v0~\$v1)는 반드시 caller가 저장해야 한다.
@@ -99,9 +100,13 @@ Branch instruction에서 비교 연산의 결과에 따라 다음 PC 값을 계�
 ## Forwarding
 
 >🔎 **Data Dependency가 생기는 경우**
+>
 >1a. EX/MEM.RegisterRd == ID/EX.RegisterRs
+>
 >1b. EX/MEM.RegisterRd == ID/EX.RegisterRt
+>
 >2a. MEM/WB.RegisterRd == ID/EX.RegisterRs
+>
 >2b. MEM/WB.RegisterRd == ID/EX.RegisterRt
 
 
@@ -139,7 +144,9 @@ I0: ADD $1, $2, $3
 I1: SUB $4, $1, $5
 ```
 I0이 업데이트하는 $1을 I1이 읽어서 사용한다. 둘 사이에 dependency가 존재하기 때문에 I1이 먼저 실행될 수 없다.
+
 R(I0) = {$2, $3}, W(I0) = {$1}, R(I1) = {$1, $5}, W(I1) = {$4}
+
 W(I0)과 R(I1)의 교집합이 존재한다.
 
 또다른 instruction I0, I1는 다음과 같다.
@@ -148,7 +155,9 @@ I0: ADD $1, $2, $3
 I1: SUB $2, $4, $5
 ```
 I1가 먼저 실행될 경우 업데이트된 $1의 값을 I0이 사용하게 되므로 둘 사이에 dependency가 존재한다. 따라서 I1이 먼저 실행될 수 없다.
+
 R(I0) = {$2, $3}, W(I0) = {$1}, R(I1) = {$4, $5}, W(I1) = {$2}
+
 R(I0)과 W(I1)의 교집합이 존재한다.
 
 #### Example 2
@@ -167,7 +176,9 @@ I0: ADD $1, $2, $3
 I1: SUB $1, $4, $5
 ```
 R(I0) = {$2, $3}, W(I0) = {$1}, R(I1) = {$4, $5}, W(I1) = {$1}
+
 sequential execution으로 실행을 마치면, I1에서 계산한 값이 $1에 저장되어야 한다. 하지만 I0이 나중에 실행되면 $1에 값이 덮어씌워진다.
+
 W(I0)과 W(I1)의 교집합이 존재한다.
 
 

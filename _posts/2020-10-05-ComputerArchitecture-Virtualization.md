@@ -32,4 +32,5 @@ OS가 control을 뺏어가서 처리한다.
 
 ##### 차이점
 exception은 진행 중인 프로세스가 유발한 동기적 이벤트. ex) page fault
-interrupt는 진행 중인 프로세스가 아닌 외부에서 발생한 비동기적 이벤트. ex) timer interrupt, disk I/O
+
+interrupt는 진행 중인 프로세스가 아닌 외부에서 발생한 비동기적 이벤트. ex) timer, interrupt, disk I/O

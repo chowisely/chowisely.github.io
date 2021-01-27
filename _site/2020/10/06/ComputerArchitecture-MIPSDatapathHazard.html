@@ -49,6 +49,7 @@
       }
     });
   </script>
+  <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
 </head><body>
   <main class="container">
     <section class="about">
@@ -79,7 +80,11 @@
         </p>
       </div>
 
-      <h4>TAGS</h4>
+      <a class="post-link" href="/etc/">
+        <h4 class="post-title">about me!</h4>
+      </a>
+
+
       <div class="tag-collections">
         
             <span class="tag" data-tag="알고리즘">알고리즘</span>
@@ -103,6 +108,7 @@
       </div>
 
     </section>
+
     <section class="content">
       <ul class="posts">
 <li class="posts-labelgroup" id="posts-labelgroup">
@@ -122,7 +128,13 @@
     <h2 class="post-title">[Architecture] MIPS &amp; Datapath &amp; Hazard</h2>
   </a>
   <div class="post-meta">
-    <div class="post-date"><i class="icon-calendar"></i>Oct 6, 2020</div><ul class="post-tags">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Oct 6, 2020 
+
+5 min to read
+
+
+    </div><ul class="post-tags">
       
         
           
@@ -140,8 +152,9 @@
 
 <h3 id="caller-save-vs-callee-save">Caller Save vs. Callee Save</h3>
 
-<p>Caller Save: 나중에 사용될 레지스터들(live register)만 따로 저장한 후에 callee를 호출한다.
-Callee Save: 프로시저를 실행하며 변경할 레지스터들만 따로 저장한다.</p>
+<p>Caller Save: 나중에 사용될 레지스터들(live register)만 따로 저장한 후에 callee를 호출한다.</p>
+
+<p>Callee Save: 프로시저를 실행하며 변경할 레지스터들만 따로 저장한다.</p>
 
 <p>return address($ra), argument($a0~$a3), return value($v0~$v1)는 반드시 caller가 저장해야 한다.</p>
 
@@ -235,11 +248,15 @@ SUB $4, $1, $5
 <h2 id="forwarding">Forwarding</h2>
 
 <blockquote>
-  <p>🔎 <strong>Data Dependency가 생기는 경우</strong>
-1a. EX/MEM.RegisterRd == ID/EX.RegisterRs
-1b. EX/MEM.RegisterRd == ID/EX.RegisterRt
-2a. MEM/WB.RegisterRd == ID/EX.RegisterRs
-2b. MEM/WB.RegisterRd == ID/EX.RegisterRt</p>
+  <p>🔎 <strong>Data Dependency가 생기는 경우</strong></p>
+
+  <p>1a. EX/MEM.RegisterRd == ID/EX.RegisterRs</p>
+
+  <p>1b. EX/MEM.RegisterRd == ID/EX.RegisterRt</p>
+
+  <p>2a. MEM/WB.RegisterRd == ID/EX.RegisterRs</p>
+
+  <p>2b. MEM/WB.RegisterRd == ID/EX.RegisterRt</p>
 </blockquote>
 
 <h3 id="ex-hazard">EX Hazard</h3>
@@ -272,17 +289,21 @@ ADD $1, $1, $4
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I0: ADD $1, $2, $3
 I1: SUB $4, $1, $5
 </code></pre></div></div>
-<p>I0이 업데이트하는 $1을 I1이 읽어서 사용한다. 둘 사이에 dependency가 존재하기 때문에 I1이 먼저 실행될 수 없다.
-R(I0) = {$2, $3}, W(I0) = {$1}, R(I1) = {$1, $5}, W(I1) = {$4}
-W(I0)과 R(I1)의 교집합이 존재한다.</p>
+<p>I0이 업데이트하는 $1을 I1이 읽어서 사용한다. 둘 사이에 dependency가 존재하기 때문에 I1이 먼저 실행될 수 없다.</p>
+
+<p>R(I0) = {$2, $3}, W(I0) = {$1}, R(I1) = {$1, $5}, W(I1) = {$4}</p>
+
+<p>W(I0)과 R(I1)의 교집합이 존재한다.</p>
 
 <p>또다른 instruction I0, I1는 다음과 같다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I0: ADD $1, $2, $3
 I1: SUB $2, $4, $5
 </code></pre></div></div>
-<p>I1가 먼저 실행될 경우 업데이트된 $1의 값을 I0이 사용하게 되므로 둘 사이에 dependency가 존재한다. 따라서 I1이 먼저 실행될 수 없다.
-R(I0) = {$2, $3}, W(I0) = {$1}, R(I1) = {$4, $5}, W(I1) = {$2}
-R(I0)과 W(I1)의 교집합이 존재한다.</p>
+<p>I1가 먼저 실행될 경우 업데이트된 $1의 값을 I0이 사용하게 되므로 둘 사이에 dependency가 존재한다. 따라서 I1이 먼저 실행될 수 없다.</p>
+
+<p>R(I0) = {$2, $3}, W(I0) = {$1}, R(I1) = {$4, $5}, W(I1) = {$2}</p>
+
+<p>R(I0)과 W(I1)의 교집합이 존재한다.</p>
 
 <h4 id="example-2">Example 2</h4>
 
@@ -297,9 +318,11 @@ I1: LW $4, 16($2)
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I0: ADD $1, $2, $3
 I1: SUB $1, $4, $5
 </code></pre></div></div>
-<p>R(I0) = {$2, $3}, W(I0) = {$1}, R(I1) = {$4, $5}, W(I1) = {$1}
-sequential execution으로 실행을 마치면, I1에서 계산한 값이 $1에 저장되어야 한다. 하지만 I0이 나중에 실행되면 $1에 값이 덮어씌워진다.
-W(I0)과 W(I1)의 교집합이 존재한다.</p>
+<p>R(I0) = {$2, $3}, W(I0) = {$1}, R(I1) = {$4, $5}, W(I1) = {$1}</p>
+
+<p>sequential execution으로 실행을 마치면, I1에서 계산한 값이 $1에 저장되어야 한다. 하지만 I0이 나중에 실행되면 $1에 값이 덮어씌워진다.</p>
+
+<p>W(I0)과 W(I1)의 교집합이 존재한다.</p>
 
 <blockquote>
   <p>🔎 <strong>Concurrent Execution이 가능한 경우</strong></p>

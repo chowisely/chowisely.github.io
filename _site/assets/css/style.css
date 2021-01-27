@@ -358,11 +358,11 @@ green     #859900  operators, other keywords
 .highlight .il { color: #2aa198; }
 
 /* Literal.Number.Integer.Long */
-.highlight { background-color: #f4f4f4; }
+.highlight { background-color: #f4f4f4; color: #aab1bf; max-width: 500px; }
 
-div.highlight { padding: 5px 20px; }
+div.highlight { padding: 10px 30px; word-break: break-all; }
 
-pre.highlight, code { font-family: 'Consolas', Menlo, monospace; line-height: 1.4em; tab-size: 4; }
+pre.highlight, code { font-size: 14px; font-family: 'D2 coding', Consolas, monospace; line-height: 1.3em; tab-size: 4; white-space: pre-wrap; }
 
 *, *:before, *:after { box-sizing: border-box; }
 
@@ -438,7 +438,7 @@ main .about .about-header .about-title { display: flex; flex-direction: column; 
 
 @media screen and (max-width: 768px) { .post-tags span { margin-top: 5px; } }
 
-.tag-collections { list-style-type: none; margin: 0px 30px; padding: 0; }
+.tag-collections { list-style-type: none; margin: 20px 30px; padding: 0; }
 
 .tag-collections .selected { background-color: #BFC9CA; }
 
@@ -466,7 +466,7 @@ main .about .about-header .about-title { display: flex; flex-direction: column; 
 
 .posts .selected, .post-container .selected { background-color: #BFC9CA; }
 
-.post-container { padding-left: 30px; }
+.post-container { padding-left: 40px; }
 
 .post { font-family: "Merriweather", sans-serif; font-weight: 300; color: #222; line-height: 1.9em; }
 
@@ -488,9 +488,11 @@ table th { background-color: #eee; font-family: Raleway; }
 
 footer { display: none; }
 
-@media screen and (max-width: 768px) { .about .about-header.condensed { align-items: start; align-self: start; } .about .about-header.condensed .about-title { flex-direction: row; margin-bottom: 10px; } .about .about-header.condensed .about-title img { max-height: 40px; } .about .about-header.condensed .about-title h2 { margin: 0 10px; } .about .about-header.condensed .tagline { font-size: 18px; margin-bottom: 0px; } .about .about-header.condensed .motto { font-size: 10px; margin-bottom: 0px; } .about .about-footer.condensed { display: none; } footer.condensed { display: flex; flex-direction: column; align-items: center; margin: 0 40px; border-top: 1px solid #eee; } }
+@media screen and (max-width: 768px) { .about .about-header.condensed { align-items: start; align-self: start; } .about .about-header.condensed .about-title { margin-left: 30px; flex-direction: row; margin-bottom: 10px; } .about .about-header.condensed .about-title img { max-height: 40px; } .about .about-header.condensed .about-title h2 { margin: 0 10px; } .about .about-header.condensed .tagline { margin-left: 30px; font-size: 18px; margin-bottom: 0px; } .about .about-header.condensed .motto { margin-left: 30px; font-size: 14px; margin-bottom: 10px; } .about .about-footer.condensed { display: none; } footer.condensed { display: flex; flex-direction: column; align-items: center; margin: 0 40px; border-top: 1px solid #eee; } }
 
 @media screen and (max-width: 768px) and (max-width: 480px) { footer.condensed { margin: 0 20px; } }
+
+@media screen and (max-width: 768px) { .tag-collections span { font-size: 14px; } }
 
 /* Post Label And Search */
 /* Hack iOS Safari Unfocus */
@@ -713,9 +715,9 @@ green     #859900  operators, other keywords
 
 .dark .highlight, .dark .highlight *, .dark * .highlight, .dark * .highlight * { background-color: #00080a; color: #93a1a1; }
 
-.dark div.highlight-dark, .dark * div.highlight-dark { padding: 5px 20px; }
+.dark div.highlight-dark, .dark * div.highlight-dark { padding: 10px 30px; }
 
-.dark pre.highlight-dark, .dark code, .dark * pre.highlight-dark, .dark * code { font-family: 'Consolas', Menlo, monospace; line-height: 1.4em; tab-size: 4; }
+.dark pre.highlight-dark, .dark code, .dark * pre.highlight-dark, .dark * code { font-size: 14px; font-family: 'D2 coding', Consolas, monospace; line-height: 1.3em; tab-size: 4; }
 
 .dark .post-tags span, .dark * .post-tags span { background-color: #333; color: #fff; }
 

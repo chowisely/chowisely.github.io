@@ -68,6 +68,9 @@ main {
     margin: 0;
   }
 
+  .more-pages {
+
+  }
   .content {
     @media screen and (min-width: $mobileW + 1) {
       max-width: calc(100% - #{$leftWidth});
@@ -212,7 +215,7 @@ main {
 
 .tag-collections {
   list-style-type: none;
-  margin: 0px 30px;
+  margin: 20px 30px;
   padding: 0;
   .selected {
     background-color: #BFC9CA;
@@ -278,7 +281,7 @@ main {
   }
 }
 .post-container {
-  padding-left: 30px;
+  padding-left: 40px;
 }
 .post {
   font-family: "Merriweather", sans-serif;
@@ -343,6 +346,7 @@ footer {
       align-items: start;
       align-self: start;
       .about-title {
+        margin-left: 30px;
         flex-direction: row;
         margin-bottom: 10px;
         img {
@@ -353,12 +357,14 @@ footer {
         }
       }
       .tagline {
+        margin-left: 30px;
         font-size: 18px;
         margin-bottom: 0px;
       }
       .motto {
-        font-size: 10px;
-        margin-bottom: 0px;
+        margin-left: 30px;
+        font-size: 14px;
+        margin-bottom: 10px;
       }
     }
     .about-footer.condensed {
@@ -374,5 +380,10 @@ footer {
       margin: 0 20px;
     }
     border-top: 1px solid #eee;
+  }
+  .tag-collections {
+    span {
+      font-size: 14px;
+    }
   }
 }

@@ -65,6 +65,7 @@ CPU Time = Clock Cycles \* Clock Cycle Time = IC \* CPI \* Clock Cycle Time
 
 
 IC: RISC > CISC
+
 CPI: RISC < CISC
 
 좋은 organization, design technology를 써서 **CPI와 clock cycle time**을 줄이는 게 목표!
@@ -256,8 +257,7 @@ ex. 부트로더
 ---
 
 # Cache Memory
-**Goal**
-To provide a virtual memory technology(illusion) that has an access time of the highest level of memory with the size and cost of the lowest level memory
+**Goal**: To provide a virtual memory technology(illusion) that has an access time of the highest level of memory with the size and cost of the lowest level memory
 
 cache memory는 **메모리 접근의 non-uniform 특성(locality)과 메모리 기술의 한계(?)**로 탄생했다. 메모리는 빠를수록 비싸고, 느릴수록 싸다. 비쌀수록 크기는 작아질 수 밖에 없다. 만약 빠르고 크고 값싼 메모리가 존재했다면 cache memory는 탄생하지 않았을 것이다. cache memory는 locality의 특성을 이용하기 때문에 마치 빠르고 크고 값싼 메모리가 존재한다는 illusion을 심어준다.
 
@@ -272,15 +272,19 @@ cache memory는 physical address로 이루어져 있어 virtual address에서 ph
 
 ## Locality
 Temporal Locality: 한번 참조된 메모리 주소는 가까운 시간 내에 다시 참조될 가능성이 높다. **(ex. loop 내 명령어, 변수)**
+
 Spatial Locality: 참조된 메모리 주소의 근처에 있는 주소들도 참조될 가능성이 높다. **(ex. array, sequential instruction fetch)**
 
 ## Terminology
 Cache Hit: 찾고자 하는 데이터가 캐시에 존재할 때
+
 Hit Ratio: 캐시에서 데이터를 찾은 횟수/전체 데이터 접근 횟수
+
 Hit Time: 캐시에서 데이터를 가져오는 데 걸리는 시간
 
 Cache Miss: 찾고자 하는 데이터가 캐시에 존재하지 않아 아래 계층에서 가져와야 할 때
 Miss Ratio: 1 - Hit Ratio
+
 Miss Penalty: 아래 계층에서 block을 가져와서 교체하는 시간 + 프로세서에게 block을 전달하는 시간
 
 **AMAT(Average Memory Access Time)**: Hit Time + Miss Penalty * Miss Ratio
@@ -289,8 +293,11 @@ Cacheline(Cache Block): 아래 계층에서 caching을 위해 가져오는 데�
 
 ## Cache Miss
 **Cold Miss(Compulsory Miss)**: 비어 있는 캐시에 처음 접근할 때 생긴다.
+
 **Capacity Miss**: 캐시가 모두 차서 더이상 저장할 공간이 없을 때 생긴다.
+
 **Conflict Miss**: **주어진 인덱스**에 대한 엔트리는 있지만 태그가 다를 때 생긴다.
+
 **Coherency Miss**: 여러 개의 CPU가 같은 캐시라인을 가지고 있고 한 CPU가 이를 업데이트할 때 다른 CPU들의 캐시라인을 invalidate시키면서 발생한다. 그후로 invalidate된 데이터는 메모리에서 참조하게 된다.
 
 ## Structure
@@ -370,34 +377,47 @@ associativity가 1이면 direct-mappped cache, cacheline의 총 개수와 같다
 **associativity는 temporal locality, block size는 spatial locality와 관련이 있다.**
 
 **Hit Time ⬇️**
+
 cache size ⬇️ but miss rate ⬆️
+
 use direct-mapped cache but miss rate ⬆️
 
 **Miss Rate ⬇️**
+
 cache size ⬆️ but hit time ⬆️ (capacity miss)
+
 associativity ⬆️ but hit time ⬆️ (conflict miss)
+
 block size ⬆️ but miss penalty ⬆️ (cold miss)
 
 **Miss Penalty ⬇️**
+
 block size ⬇️ but miss rate ⬆️ (cold miss)
+
 **add another level of cache** (first level은 hit time을 줄이고 second level은 miss rate를 줄인다.)
 
 ## Write Policy
 ### Hit
 Write-Through: cache에 쓸 때 메모리에도 써준다. 성능이 떨어진다.
+
 Write-Back: 각 cacheline 마다 dirty bit를 둔다. caching된 이후 값이 변경되었다면 dirty bit로 표시를 하고 후에 replacement될 때 메모리에 써준다. 성능은 좋지만 data incorrectness를 유발할 수 있다.
 
 ### Miss
 Write-Allocate: 메모리에 쓸 때 cache를 할당하고 써준다.
+
 Write-No-Allocate: 메모리에 쓸 때 cache에 할당하지 않는다.
 
 ### I/O Inconsistency
 1) I/O가 메모리에 있는 데이터를 변경할 때 & 데이터가 cache에 있을 때
+
 Write-Through, Write-Back 경우
+
 OS가 I/O가 시작되기 전에 cache에 있는 데이터를 invalidate한다.
 
 2) write-back 정책을 사용하는 프로세스가 cache에 있는 데이터를 변경할 때 & I/O가 데이터를 참조할 때
+
 Write-Back 경우
+
 OS가 I/O가 시작되기 전에 cache에 있는 데이터를 flush한다.
 
 
@@ -405,8 +425,12 @@ OS가 I/O가 시작되기 전에 cache에 있는 데이터를 flush한다.
 LRU나 second chance algorithm을 사용하여 교체할 cacheline을 고른다.
 
 Fully-Associative Cache: 모든 cacheline 중에서 가장 오래전에 참조된 cacheline을 선택한다.
+
 Direct-Mapped Cache: cache replacement가 따로 없다.
+
 Set-Associative Cache: tag를 공유하는 cacheline들 중에서 가장 오래전에 참조된 cacheline을 선택한다.
+
+
 
 ---
 # Virtual Memory
@@ -453,12 +477,15 @@ main memory에서 TLB로 페이지를 가져오기만 하면 된다면, 하드�
 
 # CPU Cache vs. Virtual Memory
 **공통점**
-**일종의 illusion을 제공해 프로세서의 성능을 높인다. CPU cache는 빠른 메모리 접근을, virtual memory는 보다 더 많은 프로세스를 지원함으로써 CPU의 이용률을 높인다.**
+
+일종의 illusion을 제공해 프로세서의 성능을 높인다. CPU cache는 빠른 메모리 접근을, virtual memory는 보다 더 많은 프로세스를 지원함으로써 CPU의 이용률을 높인다.**
 
 cache와 page replacement은 LRU, second changce algorithm이 있다.
 
 CPU cache는 CPU와 main memory 사이에, virtual memory는 main memory와 secondary storage 사이에 존재하고, **locality 특성을 이용해 프로세서가 메모리에 빠르게 접근하게 하며 프로세스의 이용률을 높인다**. 둘다 **dirty bit**을 두어 두 메모리 계층 간 오버헤드를 줄인다.
 
 **차이점**
+
 CPU Cache: direct-mapped 방식을 사용한다. main memory도 충분히 빠르기 때문에 소프트웨어적으로 처리하면 cache를 장점을 활용할 수 없다. direct-mapped은 비교 연산이 없고 replacement policy가 없어 **하드웨어만으로 구현**한다.
+
 Virtual Memory: secondary storage의 속도가 느리고 디스크에 접근하는 시간을 최소화하기 위해 **소프트웨어적으로 intelligently 처리**할 수 있다.

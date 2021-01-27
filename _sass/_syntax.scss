@@ -2,13 +2,18 @@
 
 .highlight {
 	background-color: #f4f4f4;
+	color: #aab1bf;
+	max-width: 500px;
 }
 
 div.highlight {
-	padding: 5px 20px;
+	padding: 10px 30px;
+	word-break: break-all;
 }
 pre.highlight, code {
-	font-family: 'Consolas', Menlo, monospace;
-	line-height: 1.4em;
+	font-size: 14px;
+	font-family: 'D2 coding', Consolas, monospace;
+	line-height: 1.3em;
 	tab-size: 4;
+	white-space: pre-wrap;
 }

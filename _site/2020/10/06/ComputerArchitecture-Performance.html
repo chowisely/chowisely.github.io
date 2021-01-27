@@ -49,6 +49,7 @@
       }
     });
   </script>
+  <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
 </head><body>
   <main class="container">
     <section class="about">
@@ -79,7 +80,11 @@
         </p>
       </div>
 
-      <h4>TAGS</h4>
+      <a class="post-link" href="/etc/">
+        <h4 class="post-title">about me!</h4>
+      </a>
+
+
       <div class="tag-collections">
         
             <span class="tag" data-tag="알고리즘">알고리즘</span>
@@ -103,6 +108,7 @@
       </div>
 
     </section>
+
     <section class="content">
       <ul class="posts">
 <li class="posts-labelgroup" id="posts-labelgroup">
@@ -122,7 +128,13 @@
     <h2 class="post-title">[Architecture] Performance</h2>
   </a>
   <div class="post-meta">
-    <div class="post-date"><i class="icon-calendar"></i>Oct 6, 2020</div><ul class="post-tags">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Oct 6, 2020 
+
+1 min to read
+
+
+    </div><ul class="post-tags">
       
         
           
@@ -142,9 +154,11 @@
 <p>wall-clock time, response time, elapsed time, CPU time</p>
 
 <h5 id="cpu-time">CPU Time</h5>
-<p>CPU Time = CPU time spent for a given program
-= Cycles/Program (=Clock Cycles) * Seconds/Cycle (=Clock Cycle Time)
-= Instructions/Programs (=IC) * Cycles Instruction (=CPI) * Seconds/Cycle</p>
+<p>CPU Time = CPU time spent for a given program</p>
+
+<p>= Cycles/Program (=Clock Cycles) * Seconds/Cycle (=Clock Cycle Time)</p>
+
+<p>= Instructions/Programs (=IC) * Cycles Instruction (=CPI) * Seconds/Cycle</p>
 
 <table>
   <thead>
@@ -196,9 +210,11 @@
 </table>
 
 <h5 id="riscreduced-instruction-set-computer-vs-cisccomplexed-instruction-set-computer">RISC(Reduced Instruction Set Computer) vs. CISC(Complexed Instruction Set Computer)</h5>
-<p>똑같은 프로그램이더라도 한 instruction 당 하는 일의 크기(?)가 다르기 때문에 RISC보다 CISC의 IC가 더 적다. (IC: RISC &gt; CISC)
-똑같은 프로그램이더라도 간단한 instruction은 빨리 끝나므로 RISC보다 CISC의 CPI가 더 크다. (CPI: RISC &lt; CISC)
-좋은 organization, design technology를 써서 CPI와 clock cycle time을 줄이는 게 목표!</p>
+<p>똑같은 프로그램이더라도 한 instruction 당 하는 일의 크기(?)가 다르기 때문에 RISC보다 CISC의 IC가 더 적다. (IC: RISC &gt; CISC)</p>
+
+<p>똑같은 프로그램이더라도 간단한 instruction은 빨리 끝나므로 RISC보다 CISC의 CPI가 더 크다. (CPI: RISC &lt; CISC)</p>
+
+<p>좋은 organization, design technology를 써서 CPI와 clock cycle time을 줄이는 게 목표!</p>
 
 <p>캐시 메모리가 나오기 이전으로 돌아가면, CPU와 메모리의 속도 차이 때문에 CPU의 유휴 상태가 길었다. 따라서 메모리에서 하나의 instruction을 가져와 많은 일을 처리하는 것이 이득이었고, 그에 따라 CISC가 한 시대를 풍미했다. 하지만 캐시 메모리가 나오자 CPU와 메모리 사이의 간극이 메워졌다. 그러다 보니 한 instruction이 한번에 많은 일을 처리하는 것보다 간단한 일을 처리하는 instruction 여러 개를 pipelining시키는 RISC가 더 효과적이게 됐다.</p>
 

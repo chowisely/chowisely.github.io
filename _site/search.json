@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "[BOJ] 2563번 색종이",
+      "title-lower"    : "[boj] 2563번 색종이",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘구현",
+      "tags"     : "알고리즘, 구현",
+      "url"      : "/2021/01/27/BOJ-2563.html",
+      "date"     : "2021-01-27 11:30:00 +0900",
+      "content"     : "문제 바로가기접근도화지 크기의 배열을 잡고 색종이가 해당하는 경우 1을 주어서 모든 1을 카운트하면 된다.#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() {  std::ios::sync_with_stdio(false);  cin.tie(NULL); cout.tie(NULL); ..."
+    } ,
+  
+    {
+      "title"    : "[BOJ] 4386번 별자리 만들기",
+      "title-lower"    : "[boj] 4386번 별자리 만들기",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘MSTunion-find",
+      "tags"     : "알고리즘, MST, union-find",
+      "url"      : "/2021/01/26/BOJ-4386.html",
+      "date"     : "2021-01-26 11:30:00 +0900",
+      "content"     : "문제 바로가기접근별의 최대 개수가 100개이므로 이 별들을 잇는 최대 간선의 수는 100*(100-1)/2이다.크지 않은 수라 가능한 모든 간선을 우선순위 큐에 넣어 Kruskal 알고리즘을 사용했다.#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;struct Edge {  int n1;  int..."
+    } ,
+  
+    {
       "title"    : "[BOJ] 2887번 행성 터널",
       "title-lower"    : "[boj] 2887번 행성 터널",
       "sub-titile" : "",
@@ -9,7 +33,7 @@
       "tags"     : "알고리즘, MST, union-find",
       "url"      : "/2021/01/25/BOJ-2887.html",
       "date"     : "2021-01-25 11:30:00 +0900",
-      "content"     : "문제 바로가기접근처음에 프림 알고리즘으로 풀었다가 최대 간선의 수가 n이 100,000일 때인 100,000(100,000 - 1)/2라 시간 초과가 떴다.바꾼 풀이법은, 먼저 행성의 위치를 x를 기준으로 정렬한다. (x를 기준으로 행성들을 일직선 상 위에 놓여있는 것과 같다.) 그리고 idx와 idx + 1의 두 행성을 x 좌표로 이을 때 비용을 저..."
+      "content"     : "문제 바로가기접근처음에 프림 알고리즘으로 풀었다가 최대 간선의 수가 n이 100,000일 때인 100,000*(100,000-1)/2라 시간 초과가 떴다.바꾼 풀이법은, 먼저 행성의 위치를 x를 기준으로 정렬한다. (x를 기준으로 행성들을 일직선 상 위에 놓여있는 것과 같다.) 그리고 idx와 idx + 1의 두 행성을 x 좌표로 이을 때 비용을 저장..."
     } ,
   
     {
@@ -118,6 +142,18 @@
       "url"      : "/2020/08/29/Algorithm-Sorting1.html",
       "date"     : "2020-08-29 11:30:00 +0900",
       "content"     : "알고리즘 수업을 들은지 1년이 지났지만 여러 정렬 알고리즘을 아직까지 제대로 모른다는 생각이 들었다. 이번을 기회로 삼아 7가지 정렬 알고리즘을 공부했고, 시간 복잡도가 높은 순서대로 정리해보았다.(* 모든 정렬은 오름차순을 기준이다.)Selection Sort배열에 나열된 요소를 쭉 훑어 가장 작은 수를 찾아내고 그것을 앞으로 보내는 것이다. 이 과..."
+    } ,
+  
+    {
+      "title"    : "[Compiler Theory] Introduction",
+      "title-lower"    : "[compiler theory] introduction",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "compiler",
+      "tags"     : "compiler",
+      "url"      : "/2020/08/17/CompilerTheory-Introduction.html",
+      "date"     : "2020-08-17 11:30:00 +0900",
+      "content"     : "지난 학기에 배웠던 컴파일러 수업을 며칠 동안 되짚어 보며 복습을 했다. 근 몇 주 동안 배웠던 과목들을 다시 공부하면서 계속 느끼는 게, 시간이 지나 다시 보니 새롭기도 하지만 이제는 큰 틀을 그릴 수 있겠다는 거다. 그래서 잊어버릴 때마다 두고두고 볼 수 있도록 글을 쓰려 한다.일반적으로 사용되고 있는 컴파일러는 2-패스 컴파일러로 IR(inter..."
     } 
   
 ]

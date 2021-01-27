@@ -49,6 +49,7 @@
       }
     });
   </script>
+  <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
 </head><body>
   <main class="container">
     <section class="about">
@@ -79,7 +80,11 @@
         </p>
       </div>
 
-      <h4>TAGS</h4>
+      <a class="post-link" href="/etc/">
+        <h4 class="post-title">about me!</h4>
+      </a>
+
+
       <div class="tag-collections">
         
             <span class="tag" data-tag="알고리즘">알고리즘</span>
@@ -103,6 +108,7 @@
       </div>
 
     </section>
+
     <section class="content">
       <ul class="posts">
 <li class="posts-labelgroup" id="posts-labelgroup">
@@ -122,7 +128,13 @@
     <h2 class="post-title">[BOJ] 2887번 행성 터널</h2>
   </a>
   <div class="post-meta">
-    <div class="post-date"><i class="icon-calendar"></i>Jan 25, 2021</div><ul class="post-tags">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Jan 25, 2021 
+
+6 min to read
+
+
+    </div><ul class="post-tags">
       
         
           
@@ -144,7 +156,7 @@
 
 <h4 id="접근">접근</h4>
 
-<p>처음에 프림 알고리즘으로 풀었다가 최대 간선의 수가 n이 100,000일 때인 100,000(100,000 - 1)/2라 시간 초과가 떴다.</p>
+<p>처음에 프림 알고리즘으로 풀었다가 최대 간선의 수가 n이 100,000일 때인 100,000*(100,000-1)/2라 시간 초과가 떴다.</p>
 
 <p>바꾼 풀이법은, 먼저 행성의 위치를 x를 기준으로 정렬한다. (x를 기준으로 행성들을 일직선 상 위에 놓여있는 것과 같다.) 그리고 idx와 idx + 1의 두 행성을 x 좌표로 이을 때 비용을 저장한다. (idx와 idx + 2는 최소 비용일 수 없으므로 이을 필요가 없다.)</p>
 
@@ -153,8 +165,6 @@
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
-<span class="cp">#define INF 987654321
-</span>
 <span class="k">struct</span> <span class="nc">Edge</span> <span class="p">{</span>
   <span class="kt">int</span> <span class="n">n1</span><span class="p">;</span>
   <span class="kt">int</span> <span class="n">n2</span><span class="p">;</span>

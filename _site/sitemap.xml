@@ -6,9 +6,19 @@
                 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
         <url>
             <loc>https://chowisely.github.io</loc>
-	    <lastmod>2021-01-26T00:13:56+09:00</lastmod>
+	    <lastmod>2021-01-27T22:27:40+09:00</lastmod>
             <priority>1.00</priority>
         </url><url>
+                <loc>https://chowisely.github.io/2021/01/27/BOJ-2563.html</loc>
+                <lastmod>2021-01-27T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2021/01/26/BOJ-4386.html</loc>
+                <lastmod>2021-01-26T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
                 <loc>https://chowisely.github.io/2021/01/25/BOJ-2887.html</loc>
                 <lastmod>2021-01-25T11:30:00+09:00</lastmod>
                 <changefreq>weekly</changefreq>
@@ -56,6 +66,11 @@
             </url><url>
                 <loc>https://chowisely.github.io/2020/08/29/Algorithm-Sorting1.html</loc>
                 <lastmod>2020-08-29T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2020/08/17/CompilerTheory-Introduction.html</loc>
+                <lastmod>2020-08-17T11:30:00+09:00</lastmod>
                 <changefreq>weekly</changefreq>
                 <priority>0.80</priority>
             </url></urlset>

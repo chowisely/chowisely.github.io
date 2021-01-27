@@ -10,10 +10,8 @@ comments:	true
 이 글에서 다룰 최단 거리를 구하는 알고리즘은 두 가지 종류로 나눌 수 있다.
 
 >1. Single Source Shortest Path: 모든 정점의 집합을 V라고 했을 때, 주어진 정점 s ∈ V에 대하여 모든 정점 t ∈ V로 가는 거리를 구한다.
-2. All Pairs Shortest Path: 모든 정점 s ∈ V에 대하여 모든 정점 t ∈ V로 가는 거리를 구한다.
-
-1번의 경우 대표적으로는 **Dijkstra, Bellman-Ford Algorithm**이 있으며,
-2번의 경우에는 **Floyd-Warshall Algorithm**이 있다.
+>2. All Pairs Shortest Path: 모든 정점 s ∈ V에 대하여 모든 정점 t ∈ V로 가는 거리를 구한다.
+1번의 경우 대표적으로는 **Dijkstra, Bellman-Ford Algorithm**이 있으며, 2번의 경우에는 **Floyd-Warshall Algorithm**이 있다.
 
 밑에서 다룰 알고리즘들은 모두 **Dynamic Programming** 기법을 사용한다. s ∈ V부터 t ∈ V까지 가는 최소 거리를 구하기 위해서 s ∈ V부터 k ∈ V까지 가는 이미 계산되어 있는 최소 거리를 이용하기 때문이다.
 

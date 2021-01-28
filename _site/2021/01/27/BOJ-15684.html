@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[BOJ] 15684번 사다리 조작</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[BOJ] 15684번 사다리 조작 | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[BOJ] 15684번 사다리 조작" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="문제 바로가기" />
+<meta property="og:description" content="문제 바로가기" />
+<link rel="canonical" href="https://chowisely.github.io/2021/01/27/BOJ-15684.html" />
+<meta property="og:url" content="https://chowisely.github.io/2021/01/27/BOJ-15684.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-27T11:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[BOJ] 15684번 사다리 조작" />
+<script type="application/ld+json">
+{"headline":"[BOJ] 15684번 사다리 조작","url":"https://chowisely.github.io/2021/01/27/BOJ-15684.html","dateModified":"2021-01-27T11:30:00+09:00","datePublished":"2021-01-27T11:30:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2021/01/27/BOJ-15684.html"},"author":{"@type":"Person","name":"chowisely"},"description":"문제 바로가기","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+  <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <a class="post-link" href="/etc/">
+        <h4 class="post-title">about me!</h4>
+      </a>
+
+
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="알고리즘">알고리즘</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="MST">MST</span>
+        
+            <span class="tag" data-tag="union-find">Union-Find</span>
+        
+            <span class="tag" data-tag="구현">구현</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+      </div>
+
+    </section>
+
+    <section class="content">
+      <ul class="posts">
+<li class="posts-labelgroup" id="posts-labelgroup">
+  <h1 id="posts-label">posts</h1>
+  
+  <div class="search-container">
+    <div class="search-section">
+      <i class="icon-search"></i>
+      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
+    </div>
+    <div class="search-results" id="search-results" data-placeholder="No Results" style="display: none;"></div>
+  </div>
+  
+</li>
+</ul><div class="post-container">
+  <a class="post-link" href="/2021/01/27/BOJ-15684.html">
+    <h2 class="post-title">[BOJ] 15684번 사다리 조작</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Jan 27, 2021 
+
+3 min to read
+
+
+    </div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="알고리즘">알고리즘</span>
+          
+        
+          
+              <span class="tag" data-tag="구현">구현</span>
+          
+        
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <h4 id="문제-바로가기"><a href="https://www.acmicpc.net/problem/15684">문제 바로가기</a></h4>
+
+<h4 id="접근">접근</h4>
+<p>DFS를 사용해 사다리 개수를 0개부터 3개까지 놓아본다. 최소 사다리 개수를 구하는 것이므로 길을 찾기만 한다면, 그게 답이 된다.
+(처음에는 DFS 한 번 불러서 가능한 모든 경우의 수를 탐색하고 답을 구했는데, 생각해보니 그럴 필요가 없었다.)</p>
+
+<p>한 가지 고려해야 할 점은, 사다리를 놓을 때 좌우에 사다리가 존재하면 안된다는 조건이다.
+나느 쉽게 풀기 위해 행의 크기는 H+1, 열의 크기는 N+1로 잡았다.
+그리고 사다리를 놓을 위치와 양옆 위치에 사다리가 존재하지 않을 때에만 사다리를 놓도록 했다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">H</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">31</span><span class="p">][</span><span class="mi">11</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">min_path</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">possible</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+<span class="kt">bool</span> <span class="nf">find_path</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">H</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">y</span><span class="p">][</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="n">y</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">i</span><span class="p">)</span>
+      <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">recursive</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">min_path</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">find_path</span><span class="p">())</span>
+      <span class="n">possible</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">y</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">H</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">recursive</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span> <span class="n">cout</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span>
+
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">N</span> <span class="o">&gt;&gt;</span> <span class="n">M</span> <span class="o">&gt;&gt;</span> <span class="n">H</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">M</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">arr</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">min_path</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="n">recursive</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">possible</span><span class="p">)</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">possible</span> <span class="o">?</span> <span class="n">min_path</span> <span class="o">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  --><div id="disqus_thread" style="margin-top:25px"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'https://chowisely.github.io/2021/01/27/BOJ-15684.html';
+      this.page.identifier = 'https://chowisely.github.io/2021/01/27/BOJ-15684.html';
+    };
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://chowisely.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+      powered by Disqus.</a></noscript></div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->

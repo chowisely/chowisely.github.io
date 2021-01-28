@@ -23,6 +23,7 @@
       }
     });
   </script>
+  <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
 </head>
 
 {%- if site.plainwhite.condensed_mobile contains page.layout -%}
@@ -51,7 +52,7 @@
       {%- if site.plainwhite.tagline -%}
       <p class="tagline">{{ site.plainwhite.tagline }}</p>
       {%- endif -%}
-      {%- if site.plainwhite.tagline -%}
+      {%- if site.plainwhite.motto -%}
       <p class="motto">{{ site.plainwhite.motto }}</p>
       {%- endif -%}
       </div>
@@ -185,7 +186,6 @@
       {% endcapture %}
       {{ footer }}
 
-      <h4>TAGS</h4>
       <div class="tag-collections">
         {% for tag in site.data.tags %}
             <span class="tag" data-tag="{{tag}}">{{ site.data.format[tag] }}</span>
@@ -193,6 +193,7 @@
       </div>
 
     </section>
+
     <section class="content">
       {{ content }}
     </section>

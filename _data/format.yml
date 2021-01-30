@@ -5,5 +5,7 @@ dfs: DFS
 bfs: BFS
 MST: MST
 union-find: Union-Find
+구현: 구현
 architecture: Architecture
 algorithm: Algorithm
+compiler: Compiler

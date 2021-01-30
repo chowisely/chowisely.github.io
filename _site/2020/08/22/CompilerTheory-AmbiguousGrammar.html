@@ -6,24 +6,24 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
-<title>[Architecture] Performance</title>
+<title>[Compiler Theory] Ambiguous Grammar</title>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>[Architecture] Performance | 초슬로그 🎯</title>
+<title>[Compiler Theory] Ambiguous Grammar | 초슬로그 🎯</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="[Architecture] Performance" />
+<meta property="og:title" content="[Compiler Theory] Ambiguous Grammar" />
 <meta name="author" content="chowisely" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자." />
-<meta property="og:description" content="컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자." />
-<link rel="canonical" href="https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html" />
-<meta property="og:url" content="https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html" />
+<meta name="description" content="모호한 문법에 대해 알아보자." />
+<meta property="og:description" content="모호한 문법에 대해 알아보자." />
+<link rel="canonical" href="https://chowisely.github.io/2020/08/22/CompilerTheory-AmbiguousGrammar.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/08/22/CompilerTheory-AmbiguousGrammar.html" />
 <meta property="og:site_name" content="초슬로그 🎯" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-10-06T11:30:00+09:00" />
+<meta property="article:published_time" content="2020-08-22T12:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[Architecture] Performance" />
+<meta property="twitter:title" content="[Compiler Theory] Ambiguous Grammar" />
 <script type="application/ld+json">
-{"url":"https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Architecture] Performance","dateModified":"2020-10-06T11:30:00+09:00","datePublished":"2020-10-06T11:30:00+09:00","description":"컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자.","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"https://chowisely.github.io/2020/08/22/CompilerTheory-AmbiguousGrammar.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Compiler Theory] Ambiguous Grammar","dateModified":"2020-08-22T12:00:00+09:00","datePublished":"2020-08-22T12:00:00+09:00","description":"모호한 문법에 대해 알아보자.","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/08/22/CompilerTheory-AmbiguousGrammar.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -123,12 +123,12 @@
   
 </li>
 </ul><div class="post-container">
-  <a class="post-link" href="/2020/10/06/ComputerArchitecture-Performance.html">
-    <h2 class="post-title">[Architecture] Performance</h2>
+  <a class="post-link" href="/2020/08/22/CompilerTheory-AmbiguousGrammar.html">
+    <h2 class="post-title">[Compiler Theory] Ambiguous Grammar</h2>
   </a>
   <div class="post-meta">
     <div class="post-date">
-      <i class="icon-calendar"></i>Oct 6, 2020 
+      <i class="icon-calendar"></i>Aug 22, 2020 
 
 1 min to read
 
@@ -137,102 +137,52 @@
       
         
           
-              <span class="tag" data-tag="architecture">Architecture</span>
+              <span class="tag" data-tag="compiler">Compiler</span>
           
         
       
     </ul></div>
   <div class="post">
-    <p>컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자.</p>
+    <p>모호한 문법에 대해 알아보자.</p>
 
 <hr />
 
-<h3 id="performance">Performance</h3>
+<p>좌단 유도(leftmost derivation) 혹은 우단 유도(rightmost derivation)를 적용했을 때 하나의 문장에 대하여 <strong>두 개 이상의 파스 트리(parse tree)</strong>가 생성될 때 <strong>모호한 문법(ambiguous grammar)</strong>이라고 한다.</p>
 
-<h4 id="time">Time</h4>
-<p>wall-clock time, response time, elapsed time, CPU time</p>
+<p>모호한 문법으로 파스 트리를 결정적으로 생성하기 위해서는 두가지 방법이 존재한다.</p>
 
-<h5 id="cpu-time">CPU Time</h5>
-<p>CPU Time = CPU time spent for a given program</p>
+<p>첫 번째는 문법 자체를 모호하지 않은 문법으로 바꾸는 것이다.
+두 번째는 문법을 건드리지 않고 파싱 테이블 내에서 모호성을 없애는 것이다. (모호한 문법의 경우 파싱 테이블의 어떠한 엔트리에 두 개 이상의 생성 규칙이 포함되어 있다.) 대표적으로는 most closely nested rule이 있다.</p>
 
-<p>= Cycles/Program (=Clock Cycles) * Seconds/Cycle (=Clock Cycle Time)</p>
-
-<p>= Instructions/Programs (=IC) * Cycles Instruction (=CPI) * Seconds/Cycle</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>-</th>
-      <th>IC</th>
-      <th>CPI</th>
-      <th>Clock Cycle Time</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Program</td>
-      <td>✔️</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Compiler</td>
-      <td>✔️</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>ISA</td>
-      <td>✔️</td>
-      <td>✔️</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Organization</td>
-      <td> </td>
-      <td>✔️</td>
-      <td>✔️</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Technology</td>
-      <td> </td>
-      <td> </td>
-      <td>✔️</td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<h5 id="riscreduced-instruction-set-computer-vs-cisccomplexed-instruction-set-computer">RISC(Reduced Instruction Set Computer) vs. CISC(Complexed Instruction Set Computer)</h5>
-<p>똑같은 프로그램이더라도 한 instruction 당 하는 일의 크기(?)가 다르기 때문에 RISC보다 CISC의 IC가 더 적다. (IC: RISC &gt; CISC)</p>
-
-<p>똑같은 프로그램이더라도 간단한 instruction은 빨리 끝나므로 RISC보다 CISC의 CPI가 더 크다. (CPI: RISC &lt; CISC)</p>
-
-<p>좋은 organization, design technology를 써서 CPI와 clock cycle time을 줄이는 게 목표!</p>
-
-<p>캐시 메모리가 나오기 이전으로 돌아가면, CPU와 메모리의 속도 차이 때문에 CPU의 유휴 상태가 길었다. 따라서 메모리에서 하나의 instruction을 가져와 많은 일을 처리하는 것이 이득이었고, 그에 따라 CISC가 한 시대를 풍미했다. 하지만 캐시 메모리가 나오자 CPU와 메모리 사이의 간극이 메워졌다. 그러다 보니 한 instruction이 한번에 많은 일을 처리하는 것보다 간단한 일을 처리하는 instruction 여러 개를 pipelining시키는 RISC가 더 효과적이게 됐다.</p>
-
-<blockquote>
-  <p><strong>RISC의 성능이 더 좋은데 왜 CISC를 사용하는 x86을 아직 쓸까?</strong>
- x86은 겉으로는 CISC이지만 내부적으로 CISC를 RISC로 변환한 후 실행한다. CISC의 시장이 이미 커져버려서 성능을 얻고자 RISC로 바꾸면 이전에 사용했던 것들(?)을 그대로 가져다 쓸 수 없다.</p>
-</blockquote>
-
-<p>컴퓨터의 경우에는 x86을 쓰지만 휴대폰, 임베디드 시스템 등에서는 RISC인 ARM architecutre를 쓴다. ARM은 특히 저전력을 사용하도록 설계되어 전력의 소모량이 중요한 곳에 쓰인다.</p>
-
-<h4 id="throughput">Throughput</h4>
-
-<p>-</p>
+<p>이 글에서는 우선 첫번째 방법에 대해서만 쓰려고 한다.</p>
 
 <hr />
 
-<h3 id="isainstruction-set-architecture">ISA(Instruction Set Architecture)</h3>
-<h4 id="adtabstract-data-type">ADT(Abstract Data Type)</h4>
-<p>ADT는 data와 그에 대한 operation으로 이루어져 있다. ISA 또한 ADT로 나타낼 수 있는데 data의 경우에는 register, memory이며 operation의 경우에는 instruction이 된다. data는 state라고도 하는데 data를 다루는 instruction을 수행하고 나면 내부의 상태가 변화한다는 의미다.</p>
+<p>다음 예제를 보자.</p>
+
+<p><img src="https://images.velog.io/images/chowisely/post/2065caf9-e39a-4a79-b17b-62b90051ce31/compiler3_1.jpg" alt="" /></p>
+
+<p>문법 G로 34 - 3 * 42에 대한 파스 트리 생성하면 두 가지 트리가 만들어진다. 왼쪽의 경우 (34 - 3) * 42이며 오른쪽의 경우 34 - (3 * 42)이다. 두 결과가 다르다. 연산자의 우선순위를 고려하면 오른쪽의 경우가 올바른 파스 트리이다.</p>
+
+<p>왼쪽의 트리가 만들어진 이유는 문법 G가 연산자 우선 순위를 고려하지 않았기 때문이다. 연산자의 우선순위가 더 높을 경우, 생성 규칙들에서 더 아래에 위치해야 한다.</p>
+
+<hr />
+
+<p>다음은 문법 G를 연산자 우선순위를 고려한 문법 G’으로 바꾸었다.</p>
+
+<p><img src="https://images.velog.io/images/chowisely/post/7a0f7f22-31db-4034-b402-bc840505ef9b/compiler3_2.jpg" alt="" /></p>
+
+<p>연산자 우선 순위를 고려했음에도 불구하고, 문법 G’로 34 - 3 - 42에 대해 두 가지 파스 트리를 생성되며 그 결과 역시 다르다.</p>
+
+<p>일반적으로 left-associativity를 사용하므로 left-associativity를 적용한다면 왼쪽 트리가 우리가 원하는 트리이다. 오른쪽 트리는 right-associativity를 적용했을 때 나온다.</p>
+
+<hr />
+
+<p>left-associativity를 고려하여 문법 G’을 G’‘으로 바꾸면 다음과 같다.</p>
+
+<p><img src="https://images.velog.io/images/chowisely/post/3c365b93-ea6e-4301-a7b4-a0d9b70f456b/compiler3_3.jpg" alt="" /></p>
+
+<p>이로써 모호한 문법 G를 모호하지 않은 문법 G’‘으로 바꾸었다.</p>
 
   </div>
 
@@ -250,8 +200,8 @@
   --><div id="disqus_thread" style="margin-top:25px"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html';
-      this.page.identifier = 'https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html';
+      this.page.url = 'https://chowisely.github.io/2020/08/22/CompilerTheory-AmbiguousGrammar.html';
+      this.page.identifier = 'https://chowisely.github.io/2020/08/22/CompilerTheory-AmbiguousGrammar.html';
     };
     (function () {
       var d = document, s = d.createElement('script');

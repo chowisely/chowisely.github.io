@@ -6,24 +6,24 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
-<title>[Architecture] Performance</title>
+<title>[Compiler Theory] Top-Down Parsing</title>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>[Architecture] Performance | 초슬로그 🎯</title>
+<title>[Compiler Theory] Top-Down Parsing | 초슬로그 🎯</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="[Architecture] Performance" />
+<meta property="og:title" content="[Compiler Theory] Top-Down Parsing" />
 <meta name="author" content="chowisely" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자." />
-<meta property="og:description" content="컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자." />
-<link rel="canonical" href="https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html" />
-<meta property="og:url" content="https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html" />
+<meta name="description" content="하향식 구문 분석에 대해 알아보자." />
+<meta property="og:description" content="하향식 구문 분석에 대해 알아보자." />
+<link rel="canonical" href="https://chowisely.github.io/2020/08/22/CompilerTheory-Top-Down-Parsing.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/08/22/CompilerTheory-Top-Down-Parsing.html" />
 <meta property="og:site_name" content="초슬로그 🎯" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-10-06T11:30:00+09:00" />
+<meta property="article:published_time" content="2020-08-22T12:30:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[Architecture] Performance" />
+<meta property="twitter:title" content="[Compiler Theory] Top-Down Parsing" />
 <script type="application/ld+json">
-{"url":"https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Architecture] Performance","dateModified":"2020-10-06T11:30:00+09:00","datePublished":"2020-10-06T11:30:00+09:00","description":"컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자.","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"https://chowisely.github.io/2020/08/22/CompilerTheory-Top-Down-Parsing.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Compiler Theory] Top-Down Parsing","dateModified":"2020-08-22T12:30:00+09:00","datePublished":"2020-08-22T12:30:00+09:00","description":"하향식 구문 분석에 대해 알아보자.","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/08/22/CompilerTheory-Top-Down-Parsing.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -123,12 +123,12 @@
   
 </li>
 </ul><div class="post-container">
-  <a class="post-link" href="/2020/10/06/ComputerArchitecture-Performance.html">
-    <h2 class="post-title">[Architecture] Performance</h2>
+  <a class="post-link" href="/2020/08/22/CompilerTheory-Top-Down-Parsing.html">
+    <h2 class="post-title">[Compiler Theory] Top-Down Parsing</h2>
   </a>
   <div class="post-meta">
     <div class="post-date">
-      <i class="icon-calendar"></i>Oct 6, 2020 
+      <i class="icon-calendar"></i>Aug 22, 2020 
 
 1 min to read
 
@@ -137,102 +137,55 @@
       
         
           
-              <span class="tag" data-tag="architecture">Architecture</span>
+              <span class="tag" data-tag="compiler">Compiler</span>
           
         
       
     </ul></div>
   <div class="post">
-    <p>컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자.</p>
+    <p>하향식 구문 분석에 대해 알아보자.</p>
 
 <hr />
 
-<h3 id="performance">Performance</h3>
+<p><strong>하향식 구문 분석(top-down parsing)</strong>는 시작 기호부터 좌단 유도를 적용하면서 문장을 찾는다. 파스 트리는 루트 노드에서 시작해 터미널 노드까지 확장해 나간다. 상향식 구문 분석(bottom-up parsing)에 비해 구현이 간단하지만 <strong>역추적(backtracking)</strong> 문제 때문에 잘 사용되지 않는다.</p>
 
-<h4 id="time">Time</h4>
-<p>wall-clock time, response time, elapsed time, CPU time</p>
-
-<h5 id="cpu-time">CPU Time</h5>
-<p>CPU Time = CPU time spent for a given program</p>
-
-<p>= Cycles/Program (=Clock Cycles) * Seconds/Cycle (=Clock Cycle Time)</p>
-
-<p>= Instructions/Programs (=IC) * Cycles Instruction (=CPI) * Seconds/Cycle</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>-</th>
-      <th>IC</th>
-      <th>CPI</th>
-      <th>Clock Cycle Time</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Program</td>
-      <td>✔️</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Compiler</td>
-      <td>✔️</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>ISA</td>
-      <td>✔️</td>
-      <td>✔️</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Organization</td>
-      <td> </td>
-      <td>✔️</td>
-      <td>✔️</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Technology</td>
-      <td> </td>
-      <td> </td>
-      <td>✔️</td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<h5 id="riscreduced-instruction-set-computer-vs-cisccomplexed-instruction-set-computer">RISC(Reduced Instruction Set Computer) vs. CISC(Complexed Instruction Set Computer)</h5>
-<p>똑같은 프로그램이더라도 한 instruction 당 하는 일의 크기(?)가 다르기 때문에 RISC보다 CISC의 IC가 더 적다. (IC: RISC &gt; CISC)</p>
-
-<p>똑같은 프로그램이더라도 간단한 instruction은 빨리 끝나므로 RISC보다 CISC의 CPI가 더 크다. (CPI: RISC &lt; CISC)</p>
-
-<p>좋은 organization, design technology를 써서 CPI와 clock cycle time을 줄이는 게 목표!</p>
-
-<p>캐시 메모리가 나오기 이전으로 돌아가면, CPU와 메모리의 속도 차이 때문에 CPU의 유휴 상태가 길었다. 따라서 메모리에서 하나의 instruction을 가져와 많은 일을 처리하는 것이 이득이었고, 그에 따라 CISC가 한 시대를 풍미했다. 하지만 캐시 메모리가 나오자 CPU와 메모리 사이의 간극이 메워졌다. 그러다 보니 한 instruction이 한번에 많은 일을 처리하는 것보다 간단한 일을 처리하는 instruction 여러 개를 pipelining시키는 RISC가 더 효과적이게 됐다.</p>
-
-<blockquote>
-  <p><strong>RISC의 성능이 더 좋은데 왜 CISC를 사용하는 x86을 아직 쓸까?</strong>
- x86은 겉으로는 CISC이지만 내부적으로 CISC를 RISC로 변환한 후 실행한다. CISC의 시장이 이미 커져버려서 성능을 얻고자 RISC로 바꾸면 이전에 사용했던 것들(?)을 그대로 가져다 쓸 수 없다.</p>
-</blockquote>
-
-<p>컴퓨터의 경우에는 x86을 쓰지만 휴대폰, 임베디드 시스템 등에서는 RISC인 ARM architecutre를 쓴다. ARM은 특히 저전력을 사용하도록 설계되어 전력의 소모량이 중요한 곳에 쓰인다.</p>
-
-<h4 id="throughput">Throughput</h4>
-
-<p>-</p>
+<p>하향식 구문 분석을 위해서는 문맥 자유 문법(context free grammar)에 존재하는 <strong>좌재귀(left recursion)</strong>을 제거해야 하며, 공통된 접두사를 가진 생성규칙들을 <strong>좌인수분해(left factoring)</strong>해야 한다.</p>
 
 <hr />
 
-<h3 id="isainstruction-set-architecture">ISA(Instruction Set Architecture)</h3>
-<h4 id="adtabstract-data-type">ADT(Abstract Data Type)</h4>
-<p>ADT는 data와 그에 대한 operation으로 이루어져 있다. ISA 또한 ADT로 나타낼 수 있는데 data의 경우에는 register, memory이며 operation의 경우에는 instruction이 된다. data는 state라고도 하는데 data를 다루는 instruction을 수행하고 나면 내부의 상태가 변화한다는 의미다.</p>
+<p>일반적으로 하향식 구문 분석은 역추적을 하면서 순서대로 생성 규칙을 적용하기 때문에 시간이 많이 소요된다.</p>
+
+<p>역추적을 하는 파서(parser)는 <strong>Recursive Descent Parser</strong>가 있다. 터미널과 논터미널에 대해 프로시저를 모두 작성하여 재귀적으로 프로시저를 호출하며 구문 분석을 한다. 구현이 쉽다는 장점이 있지만, 역추적 문제를 안고 있으며 생성 규칙을 수정하게 되면 파서의 많은 부분을 바꾸어야 한다.</p>
+
+<p>역추적 문제를 해결하기 위해서는 <strong>결정적으로 구문 분석</strong>을 할 수 있는 방법이 필요하다.</p>
+
+<hr />
+
+<h3 id="ll-condition">LL Condition</h3>
+<p><strong>LL 조건(LL condition)</strong>은 문맥 자유 문법에 어떠한 조건을 붙이며, <strong>First Set</strong>과 <strong>Follow Set</strong>을 사용해 생성 규칙을 선택하여 결정적 구문 분석을 가능하게 한다.</p>
+
+<p>First Set은 어떠한 논터미널로부터 유도되어 처음에 나타날 수 있는 터미널들의 집합이다.</p>
+
+<p>Follow Set은 어떠한 논터미널 뒤에 나타날 수 있는 터미널들의 집합이다.</p>
+
+<hr />
+
+<h3 id="ll-parser">LL Parser</h3>
+<p>LL 조건을 만족하는 문법을 LL 문법이라 하고 LL 문법으로 구성한 파서를 <strong>LL 파서(LL Parser)</strong>라고 한다.</p>
+
+<p>LL Parser는 LL 조건과 lookahead를 사용함으로써 결정적인 구문 분석이 가능하다.</p>
+
+<p>LL은 <strong>left to right scanning &amp; leftmost derivation</strong>의 약자로, 입력을 왼쪽에서 오른쪽으로 읽으며 좌단 유도로 좌파스를 생성한다. 또한 LL Parser는 LL(1) Parser라고 하기도 하는데, 1은 lookahead 기호 개수를 나타낸다.</p>
+
+<p><img src="https://images.velog.io/images/chowisely/post/7d73a057-ff99-4522-8f67-71d3c9e9bcdc/compiler4_1.jpg" alt="" /></p>
+
+<p>파서를 만들기 위해서는 문법 G에 대하여 First Set과 Follow Set을 구하고, 문법이 LL 조건에 부합하는지 확인한다. 부합한다면, 파싱 테이블을 구성하고 다음 알고리즘을 따라 주어진 문장에 대해 구문 분석을 진행하면 된다.</p>
+
+<hr />
+
+<h3 id="ll-parser-algorithm">LL Parser Algorithm</h3>
+
+<p><img src="https://images.velog.io/images/chowisely/post/25440a31-e1ab-40ca-a792-98b712031e6f/compiler4_2.png" alt="" /></p>
 
   </div>
 
@@ -250,8 +203,8 @@
   --><div id="disqus_thread" style="margin-top:25px"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html';
-      this.page.identifier = 'https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html';
+      this.page.url = 'https://chowisely.github.io/2020/08/22/CompilerTheory-Top-Down-Parsing.html';
+      this.page.identifier = 'https://chowisely.github.io/2020/08/22/CompilerTheory-Top-Down-Parsing.html';
     };
     (function () {
       var d = document, s = d.createElement('script');

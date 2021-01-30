@@ -1,14 +1,26 @@
 [
   
     {
+      "title"    : "[BOJ] 2636번 치즈",
+      "title-lower"    : "[boj] 2636번 치즈",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘구현bfs",
+      "tags"     : "알고리즘, 구현, bfs",
+      "url"      : "/2021/01/30/BOJ-2636.html",
+      "date"     : "2021-01-30 11:30:00 +0900",
+      "content"     : "문제 바로가기접근이 문제의 핵심은 치즈의 구멍이라고 생각한다. 처음에는 사방이 치즈로 둘러싸여 있지 않다면 녹을 차례라고 생각했는데, 치즈의 구멍을 간과했었다.치즈의 구멍을 고려해서 풀어보면, 판의 가장자리인 (0,0)은 항상 치즈가 놓여 있지 않으므로 해당 지점을 시작으로 BFS로 탐색을 한다.한 번 탐색이 끝났을 때 치즈가 놓인 곳에 방문 표시가 ..."
+    } ,
+  
+    {
       "title"    : "[BOJ] 15684번 사다리 조작",
       "title-lower"    : "[boj] 15684번 사다리 조작",
       "sub-titile" : "",
       "sub-titile-lower" : "",
-      "categories" : "알고리즘구현DFS",
-      "tags"     : "알고리즘, 구현, DFS",
-      "url"      : "/2021/01/27/BOJ-15684.html",
-      "date"     : "2021-01-27 11:30:00 +0900",
+      "categories" : "알고리즘구현dfs",
+      "tags"     : "알고리즘, 구현, dfs",
+      "url"      : "/2021/01/28/BOJ-15684.html",
+      "date"     : "2021-01-28 11:30:00 +0900",
       "content"     : "문제 바로가기접근DFS를 사용해 사다리 개수를 0개부터 3개까지 놓아본다. 최소 사다리 개수를 구하는 것이므로 길을 찾기만 한다면, 그게 답이 된다.(처음에는 DFS 한 번 불러서 가능한 모든 경우의 수를 탐색하고 답을 구했는데, 생각해보니 그럴 필요가 없었다.)한 가지 고려해야 할 점은, 사다리를 놓을 때 좌우에 사다리가 존재하면 안된다는 조건이다...."
     } ,
   
@@ -157,6 +169,42 @@
     } ,
   
     {
+      "title"    : "[Compiler Theory] Top-Down Parsing",
+      "title-lower"    : "[compiler theory] top-down parsing",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "compiler",
+      "tags"     : "compiler",
+      "url"      : "/2020/08/22/CompilerTheory-Top-Down-Parsing.html",
+      "date"     : "2020-08-22 12:30:00 +0900",
+      "content"     : "하향식 구문 분석에 대해 알아보자.하향식 구문 분석(top-down parsing)는 시작 기호부터 좌단 유도를 적용하면서 문장을 찾는다. 파스 트리는 루트 노드에서 시작해 터미널 노드까지 확장해 나간다. 상향식 구문 분석(bottom-up parsing)에 비해 구현이 간단하지만 역추적(backtracking) 문제 때문에 잘 사용되지 않는다.하향식..."
+    } ,
+  
+    {
+      "title"    : "[Compiler Theory] Ambiguous Grammar",
+      "title-lower"    : "[compiler theory] ambiguous grammar",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "compiler",
+      "tags"     : "compiler",
+      "url"      : "/2020/08/22/CompilerTheory-AmbiguousGrammar.html",
+      "date"     : "2020-08-22 12:00:00 +0900",
+      "content"     : "모호한 문법에 대해 알아보자.좌단 유도(leftmost derivation) 혹은 우단 유도(rightmost derivation)를 적용했을 때 하나의 문장에 대하여 두 개 이상의 파스 트리(parse tree)가 생성될 때 모호한 문법(ambiguous grammar)이라고 한다.모호한 문법으로 파스 트리를 결정적으로 생성하기 위해서는 두가지 방법..."
+    } ,
+  
+    {
+      "title"    : "[Compiler Theory] Chomsky Hierarchy",
+      "title-lower"    : "[compiler theory] chomsky hierarchy",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "compiler",
+      "tags"     : "compiler",
+      "url"      : "/2020/08/22/CompilerTheory-ChomskyHierarchy.html",
+      "date"     : "2020-08-22 11:30:00 +0900",
+      "content"     : "촘스키 계층 구조에 대해 알아보자.            Type      Name      Rule      Recognizer                  0      Recursively Enummerable Language      아무런 제약이 없음      Turing Machine              1      Context Sens..."
+    } ,
+  
+    {
       "title"    : "[Compiler Theory] Introduction",
       "title-lower"    : "[compiler theory] introduction",
       "sub-titile" : "",
@@ -165,7 +213,7 @@
       "tags"     : "compiler",
       "url"      : "/2020/08/17/CompilerTheory-Introduction.html",
       "date"     : "2020-08-17 11:30:00 +0900",
-      "content"     : "지난 학기에 배웠던 컴파일러 수업을 며칠 동안 되짚어 보며 복습을 했다. 근 몇 주 동안 배웠던 과목들을 다시 공부하면서 계속 느끼는 게, 시간이 지나 다시 보니 새롭기도 하지만 이제는 큰 틀을 그릴 수 있겠다는 거다. 그래서 잊어버릴 때마다 두고두고 볼 수 있도록 글을 쓰려 한다.일반적으로 사용되고 있는 컴파일러는 2-패스 컴파일러로 IR(inter..."
+      "content"     : "컴파일로 이론 개요에 대해 살펴보자.지난 학기에 배웠던 컴파일러 수업을 며칠 동안 되짚어 보며 복습을 했다. 근 몇 주 동안 배웠던 과목들을 다시 공부하면서 계속 느끼는 게, 시간이 지나 다시 보니 새롭기도 하지만 이제는 큰 틀을 그릴 수 있겠다는 거다. 그래서 잊어버릴 때마다 두고두고 볼 수 있도록 글을 쓰려 한다.일반적으로 사용되고 있는 컴파일러는..."
     } 
   
 ]

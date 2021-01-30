@@ -6,24 +6,24 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
-<title>[Architecture] Performance</title>
+<title>[Compiler Theory] Chomsky Hierarchy</title>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>[Architecture] Performance | 초슬로그 🎯</title>
+<title>[Compiler Theory] Chomsky Hierarchy | 초슬로그 🎯</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="[Architecture] Performance" />
+<meta property="og:title" content="[Compiler Theory] Chomsky Hierarchy" />
 <meta name="author" content="chowisely" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자." />
-<meta property="og:description" content="컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자." />
-<link rel="canonical" href="https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html" />
-<meta property="og:url" content="https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html" />
+<meta name="description" content="촘스키 계층 구조에 대해 알아보자." />
+<meta property="og:description" content="촘스키 계층 구조에 대해 알아보자." />
+<link rel="canonical" href="https://chowisely.github.io/2020/08/22/CompilerTheory-ChomskyHierarchy.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/08/22/CompilerTheory-ChomskyHierarchy.html" />
 <meta property="og:site_name" content="초슬로그 🎯" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2020-10-06T11:30:00+09:00" />
+<meta property="article:published_time" content="2020-08-22T11:30:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[Architecture] Performance" />
+<meta property="twitter:title" content="[Compiler Theory] Chomsky Hierarchy" />
 <script type="application/ld+json">
-{"url":"https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Architecture] Performance","dateModified":"2020-10-06T11:30:00+09:00","datePublished":"2020-10-06T11:30:00+09:00","description":"컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자.","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"https://chowisely.github.io/2020/08/22/CompilerTheory-ChomskyHierarchy.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Compiler Theory] Chomsky Hierarchy","dateModified":"2020-08-22T11:30:00+09:00","datePublished":"2020-08-22T11:30:00+09:00","description":"촘스키 계층 구조에 대해 알아보자.","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/08/22/CompilerTheory-ChomskyHierarchy.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -123,12 +123,12 @@
   
 </li>
 </ul><div class="post-container">
-  <a class="post-link" href="/2020/10/06/ComputerArchitecture-Performance.html">
-    <h2 class="post-title">[Architecture] Performance</h2>
+  <a class="post-link" href="/2020/08/22/CompilerTheory-ChomskyHierarchy.html">
+    <h2 class="post-title">[Compiler Theory] Chomsky Hierarchy</h2>
   </a>
   <div class="post-meta">
     <div class="post-date">
-      <i class="icon-calendar"></i>Oct 6, 2020 
+      <i class="icon-calendar"></i>Aug 22, 2020 
 
 1 min to read
 
@@ -137,102 +137,77 @@
       
         
           
-              <span class="tag" data-tag="architecture">Architecture</span>
+              <span class="tag" data-tag="compiler">Compiler</span>
           
         
       
     </ul></div>
   <div class="post">
-    <p>컴퓨터 아키텍쳐의 성능에 영향을 미치는 요인들을 파악하자.</p>
+    <p>촘스키 계층 구조에 대해 알아보자.</p>
 
 <hr />
-
-<h3 id="performance">Performance</h3>
-
-<h4 id="time">Time</h4>
-<p>wall-clock time, response time, elapsed time, CPU time</p>
-
-<h5 id="cpu-time">CPU Time</h5>
-<p>CPU Time = CPU time spent for a given program</p>
-
-<p>= Cycles/Program (=Clock Cycles) * Seconds/Cycle (=Clock Cycle Time)</p>
-
-<p>= Instructions/Programs (=IC) * Cycles Instruction (=CPI) * Seconds/Cycle</p>
 
 <table>
   <thead>
     <tr>
-      <th>-</th>
-      <th>IC</th>
-      <th>CPI</th>
-      <th>Clock Cycle Time</th>
-      <th> </th>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Rule</th>
+      <th>Recognizer</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Program</td>
-      <td>✔️</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>0</td>
+      <td>Recursively Enummerable Language</td>
+      <td>아무런 제약이 없음</td>
+      <td>Turing Machine</td>
     </tr>
     <tr>
-      <td>Compiler</td>
-      <td>✔️</td>
-      <td> </td>
-      <td> </td>
-      <td> </td>
+      <td>1</td>
+      <td>Context Sensitive Language</td>
+      <td>A -&gt; B (|A| &lt;= |B|)</td>
+      <td>Linear Bounded Automata</td>
     </tr>
     <tr>
-      <td>ISA</td>
-      <td>✔️</td>
-      <td>✔️</td>
-      <td> </td>
-      <td> </td>
+      <td>2</td>
+      <td>Context Free Language</td>
+      <td>A -&gt; B (|A| &lt;= |B|, |A| = 1)</td>
+      <td>Push-Down Automata</td>
     </tr>
     <tr>
-      <td>Organization</td>
-      <td> </td>
-      <td>✔️</td>
-      <td>✔️</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Technology</td>
-      <td> </td>
-      <td> </td>
-      <td>✔️</td>
-      <td> </td>
+      <td>3</td>
+      <td>Regular Language</td>
+      <td>A -&gt; tB, A -&gt; t or A -&gt; Bt, A -&gt; t (|A| &lt;= |B|, |A| = 1, t는 터미널, B는 논터미널)</td>
+      <td>Finite Automata</td>
     </tr>
   </tbody>
 </table>
 
-<h5 id="riscreduced-instruction-set-computer-vs-cisccomplexed-instruction-set-computer">RISC(Reduced Instruction Set Computer) vs. CISC(Complexed Instruction Set Computer)</h5>
-<p>똑같은 프로그램이더라도 한 instruction 당 하는 일의 크기(?)가 다르기 때문에 RISC보다 CISC의 IC가 더 적다. (IC: RISC &gt; CISC)</p>
+<hr />
+<h3 id="context-free-language">Context Free Language</h3>
 
-<p>똑같은 프로그램이더라도 간단한 instruction은 빨리 끝나므로 RISC보다 CISC의 CPI가 더 크다. (CPI: RISC &lt; CISC)</p>
+<p><img src="https://images.velog.io/images/chowisely/post/f472576e-ad77-4d16-87f6-8932a3f99da1/Compiler2_1.jpg" alt="" /></p>
 
-<p>좋은 organization, design technology를 써서 CPI와 clock cycle time을 줄이는 게 목표!</p>
-
-<p>캐시 메모리가 나오기 이전으로 돌아가면, CPU와 메모리의 속도 차이 때문에 CPU의 유휴 상태가 길었다. 따라서 메모리에서 하나의 instruction을 가져와 많은 일을 처리하는 것이 이득이었고, 그에 따라 CISC가 한 시대를 풍미했다. 하지만 캐시 메모리가 나오자 CPU와 메모리 사이의 간극이 메워졌다. 그러다 보니 한 instruction이 한번에 많은 일을 처리하는 것보다 간단한 일을 처리하는 instruction 여러 개를 pipelining시키는 RISC가 더 효과적이게 됐다.</p>
-
-<blockquote>
-  <p><strong>RISC의 성능이 더 좋은데 왜 CISC를 사용하는 x86을 아직 쓸까?</strong>
- x86은 겉으로는 CISC이지만 내부적으로 CISC를 RISC로 변환한 후 실행한다. CISC의 시장이 이미 커져버려서 성능을 얻고자 RISC로 바꾸면 이전에 사용했던 것들(?)을 그대로 가져다 쓸 수 없다.</p>
-</blockquote>
-
-<p>컴퓨터의 경우에는 x86을 쓰지만 휴대폰, 임베디드 시스템 등에서는 RISC인 ARM architecutre를 쓴다. ARM은 특히 저전력을 사용하도록 설계되어 전력의 소모량이 중요한 곳에 쓰인다.</p>
-
-<h4 id="throughput">Throughput</h4>
-
-<p>-</p>
+<p>위 그림의 <strong>푸시 다운 오토마타(push-down-automata)</strong>는 입력 버퍼(input buffer)와 유한 상태 제어(finite state control)으로 구성된 유한 오토마타(finite automata)에 스택(stack)을 추가했다. 스택을 추가함으로써 이전의 상태로 돌아갈 수 있다. 푸시(push) 연산을 하면 새로운 상태로 <strong>전이(transition)</strong>되고, 팝(pop) 연산을 하면 이전의 상태로 돌아간다.</p>
 
 <hr />
 
-<h3 id="isainstruction-set-architecture">ISA(Instruction Set Architecture)</h3>
-<h4 id="adtabstract-data-type">ADT(Abstract Data Type)</h4>
-<p>ADT는 data와 그에 대한 operation으로 이루어져 있다. ISA 또한 ADT로 나타낼 수 있는데 data의 경우에는 register, memory이며 operation의 경우에는 instruction이 된다. data는 state라고도 하는데 data를 다루는 instruction을 수행하고 나면 내부의 상태가 변화한다는 의미다.</p>
+<h3 id="regular-language">Regular Language</h3>
+<p><strong>정규 언어(regular language)</strong>는 무한하다는 특성을 갖고 있지만 이를 인식하는 유한 오토마타는 유한한 메모리를 가지고 있다. 따라서 어느 단계에서나 문자열을 처리할 때 기억해야 할 정보가 제한되어야만 정규 언어라고 할 수 있다.</p>
+
+<p>정규 언어가 아님을 보일 수 있는 방법이 펌핑 보조 정리를 사용하는 것이다. (펌핑 보조 정리를 만족한다고 해서 반드시 정규 언어인 것은 아니다.)</p>
+
+<p>Pigeonhole princle에 따르면, m개의 상자에 n개의 물건을 넣는다면(n &gt; m), 적어도 하나의 상자는 2개 이상의 물건을 가지고 있어야 한다.</p>
+
+<p>언어 L = {a^n b^n : n &gt;= 0}을 예로 들자.</p>
+
+<p>유한 오토마타는 유한한 메모리, 즉 유한한 상태를 가지고 있다. 반면에 정규 언어는 무한하다.</p>
+
+<p>두 특징을 종합하면, 똑같은 상태 q0에서 a^n, a^m(n != m)을 입력받았을 때 상태 q로 전이되는 경우가 있다. 그리고 유한 오토마타는 a^n b^n를 허락(accept)하므로 상태 q에서 b^n을 입력 받았을 때 final state로 가야만 한다. 하지만 상태 q0에서 a^m을 입력 받아 상태 q로 가고, q에서 b^n을 입력받아 final state로 간다.</p>
+
+<p>정리해서 말하자면 n과 m이 같을 때에만 a^m b^n이 final state로 가야하지만 m과 n이 다르므로 모순이 생긴다. 오토마타가 a^m b^n을 허락하지 않아야 하지만 그러지 못한다는 것이다.
+따라서 언어 L은 정규 언어라고 할 수 없다.</p>
 
   </div>
 
@@ -250,8 +225,8 @@
   --><div id="disqus_thread" style="margin-top:25px"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = 'https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html';
-      this.page.identifier = 'https://chowisely.github.io/2020/10/06/ComputerArchitecture-Performance.html';
+      this.page.url = 'https://chowisely.github.io/2020/08/22/CompilerTheory-ChomskyHierarchy.html';
+      this.page.identifier = 'https://chowisely.github.io/2020/08/22/CompilerTheory-ChomskyHierarchy.html';
     };
     (function () {
       var d = document, s = d.createElement('script');

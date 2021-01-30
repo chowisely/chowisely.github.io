@@ -194,22 +194,31 @@ main {
   padding-bottom: 1rem;
 }
 
+.text_right {
+  text-align: right;
+}
+
 .post-tags {
   span {
     list-style-type: none;
     margin: 0;
     padding: 0;
 
-    font-size: 14px;
+    font-size: 12px;
     float: left;
     background-color: #e3e3e3;
-    padding: 5px 8px;
+    padding: 3px 6px;
     border-radius: 3px;
     @media screen and (max-width: $mobileW) {
+      font-size: 12px;
       margin-top: 5px;
     }
     margin-bottom: 10px;
     margin-right: 7px;
+  }
+
+  @media screen and (max-width: $mobileW) {
+    padding-inline-start: 0px;
   }
 }
 
@@ -221,10 +230,10 @@ main {
     background-color: #BFC9CA;
   }
   span {
-    font-size: 14px;
+    font-size: 12px;
     float: left;
     background-color: #e3e3e3;
-    padding: 5px 8px;
+    padding: 3px 6px;
     border-radius: 3px;
     @media screen and (max-width: $mobileW) {
       margin-top: 5px;
@@ -383,7 +392,7 @@ footer {
   }
   .tag-collections {
     span {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 }

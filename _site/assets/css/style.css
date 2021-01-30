@@ -362,7 +362,7 @@ green     #859900  operators, other keywords
 
 div.highlight { padding: 10px 30px; word-break: break-all; }
 
-pre.highlight, code { font-size: 14px; font-family: 'D2 coding', Consolas, monospace; line-height: 1.3em; tab-size: 4; white-space: pre-wrap; }
+pre.highlight, code { font-size: 12px; font-family: 'D2 coding', Consolas, monospace; line-height: 1.3em; tab-size: 4; white-space: pre-wrap; }
 
 *, *:before, *:after { box-sizing: border-box; }
 
@@ -434,15 +434,19 @@ main .about .about-header .about-title { display: flex; flex-direction: column; 
 
 .post-wrapper { border-bottom: 1px solid #ececec; margin-bottom: 1rem; padding-bottom: 1rem; }
 
-.post-tags span { list-style-type: none; margin: 0; padding: 0; font-size: 14px; float: left; background-color: #e3e3e3; padding: 5px 8px; border-radius: 3px; margin-bottom: 10px; margin-right: 7px; }
+.text_right { text-align: right; }
 
-@media screen and (max-width: 768px) { .post-tags span { margin-top: 5px; } }
+.post-tags span { list-style-type: none; margin: 0; padding: 0; font-size: 12px; float: left; background-color: #e3e3e3; padding: 3px 6px; border-radius: 3px; margin-bottom: 10px; margin-right: 7px; }
+
+@media screen and (max-width: 768px) { .post-tags span { font-size: 12px; margin-top: 5px; } }
+
+@media screen and (max-width: 768px) { .post-tags { padding-inline-start: 0px; } }
 
 .tag-collections { list-style-type: none; margin: 20px 30px; padding: 0; }
 
 .tag-collections .selected { background-color: #BFC9CA; }
 
-.tag-collections span { font-size: 14px; float: left; background-color: #e3e3e3; padding: 5px 8px; border-radius: 3px; margin-bottom: 10px; margin-right: 7px; }
+.tag-collections span { font-size: 12px; float: left; background-color: #e3e3e3; padding: 3px 6px; border-radius: 3px; margin-bottom: 10px; margin-right: 7px; }
 
 @media screen and (max-width: 768px) { .tag-collections span { margin-top: 5px; } }
 
@@ -492,7 +496,7 @@ footer { display: none; }
 
 @media screen and (max-width: 768px) and (max-width: 480px) { footer.condensed { margin: 0 20px; } }
 
-@media screen and (max-width: 768px) { .tag-collections span { font-size: 14px; } }
+@media screen and (max-width: 768px) { .tag-collections span { font-size: 12px; } }
 
 /* Post Label And Search */
 /* Hack iOS Safari Unfocus */
@@ -717,7 +721,7 @@ green     #859900  operators, other keywords
 
 .dark div.highlight-dark, .dark * div.highlight-dark { padding: 10px 30px; }
 
-.dark pre.highlight-dark, .dark code, .dark * pre.highlight-dark, .dark * code { font-size: 14px; font-family: 'D2 coding', Consolas, monospace; line-height: 1.3em; tab-size: 4; }
+.dark pre.highlight-dark, .dark code, .dark * pre.highlight-dark, .dark * code { font-size: 12px; font-family: 'D2 coding', Consolas, monospace; line-height: 1.3em; tab-size: 4; }
 
 .dark .post-tags span, .dark * .post-tags span { background-color: #333; color: #fff; }
 

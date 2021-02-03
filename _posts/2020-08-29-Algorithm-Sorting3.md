@@ -7,6 +7,8 @@ series: 	Algorithm
 comments:	true
 ---
 
+시간 복잡도가 O(N)인 정렬 알고리즘을 하나를 알아보자.
+
 ### Counting Sort
 
 특이하게도 counting sort는 정렬 알고리즘이지만 비교 연산을 하지 않는다. 이름처럼 해당 숫자를 '카운팅'할 뿐이다. 정렬하고자 하는 숫자들의 범위가 주어져야 하는 것이 조건이다.

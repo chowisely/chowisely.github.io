@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[Operating Systems] Interrupt & System Call</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Operating Systems] Interrupt &amp; System Call | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[Operating Systems] Interrupt &amp; System Call" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="OS의 인터럽트 관리에 대해 알아보자." />
+<meta property="og:description" content="OS의 인터럽트 관리에 대해 알아보자." />
+<link rel="canonical" href="https://chowisely.github.io/2020/08/20/OS-Interrupt-SystemCall.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/08/20/OS-Interrupt-SystemCall.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-20T12:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Operating Systems] Interrupt &amp; System Call" />
+<script type="application/ld+json">
+{"url":"https://chowisely.github.io/2020/08/20/OS-Interrupt-SystemCall.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Operating Systems] Interrupt &amp; System Call","dateModified":"2020-08-20T12:30:00+09:00","datePublished":"2020-08-20T12:30:00+09:00","description":"OS의 인터럽트 관리에 대해 알아보자.","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/08/20/OS-Interrupt-SystemCall.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+  <link href="https://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="알고리즘">알고리즘</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="MST">MST</span>
+        
+            <span class="tag" data-tag="union-find">Union-Find</span>
+        
+            <span class="tag" data-tag="구현">구현</span>
+        
+            <span class="tag" data-tag="os">OS</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+            <span class="tag" data-tag="compiler">Compiler</span>
+        
+      </div>
+
+    </section>
+
+    <section class="content">
+      <ul class="posts">
+<li class="posts-labelgroup" id="posts-labelgroup">
+  <h1 id="posts-label">posts</h1>
+  
+  <div class="search-container">
+    <div class="search-section">
+      <i class="icon-search"></i>
+      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
+    </div>
+    <div class="search-results" id="search-results" data-placeholder="No Results" style="display: none;"></div>
+  </div>
+  
+</li>
+</ul><div class="post-container">
+  <a class="post-link" href="/2020/08/20/OS-Interrupt-SystemCall.html">
+    <h2 class="post-title">[Operating Systems] Interrupt &amp; System Call</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Aug 20, 2020 
+
+4 min to read
+
+
+    </div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="os">OS</span>
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <p>OS의 인터럽트 관리에 대해 알아보자.</p>
+
+<hr />
+
+<h3 id="os-is-interrupt-driven">“OS is interrupt-driven.”</h3>
+
+<h3 id="interrupt">Interrupt</h3>
+<p>일반적으로 <strong>인터럽트(interrupt)</strong>는 하드웨어가 어떠한 이벤트를 CPU에게 알리기 위해서 사용하는 방법이다. 하지만 실행 중인 프로세스가 CPU 내의 인터럽트 라인을 세팅하여 인터럽트를 걸기도 한다. 전자를 비동기식 인터럽트(asynchronous interrupt), 후자를 동기식 인터럽트(synchronous interrupt)라고 부른다. <strong>비동기식 인터럽트는 하드웨어</strong>, <strong>동기식 인터럽트는 소프트웨어</strong>에 의해 걸린다고 생각하면 편하다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>종류</th>
+      <th>설명</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>하드웨어 인터럽트</td>
+      <td>입출력장치, 타이밍 장치, 전원 등 외부적인 요인에 의해 발생. ISR 종료 후 대기.</td>
+      <td>키보드, 마우스 입력</td>
+    </tr>
+    <tr>
+      <td>소프트웨어 인터럽트(exception or trap)</td>
+      <td>소프트웨어가 OS 서비스를 요청하거나 에러를 일으켰을 때 발생. ISR 종료 후 다시 프로그램으로 돌아거나 프로그램을 강제로 종료.</td>
+      <td>파일 읽기/쓰기, 0으로 나누기, 오버플로우</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>소프트웨어 인터럽트</strong>는 세 가지로 나뉠 수 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>종류</th>
+      <th>설명</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Trap</td>
+      <td>의도적으로 일으킨 예외. ISR 종료 후 실행 재개함.</td>
+      <td>시스템 콜</td>
+    </tr>
+    <tr>
+      <td>Fault</td>
+      <td>복구가 가능할 수도 있는 예외. ISR 종료 후 실행을 재개할 가능성도 있음.</td>
+      <td>0으로 나누기, 잘못된 메모리 접근</td>
+    </tr>
+    <tr>
+      <td>Abort</td>
+      <td>복구가 불가능한 예외. ISR 실행 시 프로그램 강제 종료.</td>
+      <td>하드웨어 고장</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="interrupt-service-routineisr">Interrupt Service Routine(ISR)</h3>
+<p>CPU에 인터럽트가 걸리면 <strong>인터럽트 서비스 루틴(interrupt service routine)</strong>에 제어권을 넘겨준다. ISR은 인터럽트의 종류별로 <strong>인터럽트 핸들러(interrupt handler)</strong>의 주소가 담긴 테이블인 <strong>인터럽트 벡터(interrupt vector)</strong>를 보고 어떤 인터럽트가 발생했는지 결정한다. 그리고 해당하는 인터럽트 핸들러의 주소로 이동하여 예외처리를 실행한다.</p>
+
+<hr />
+
+<h3 id="dual-mode">Dual Mode</h3>
+<p>일반 사용자가 컴퓨터에 치명적인 명령어를 사용할 수 없도록, 일반 사용자로부터 시스템을 보호하기 위해 하드웨어적으로 <strong>이중 모드(dual mode)</strong>라는 것을 지원한다. 이중 모드는 <strong>사용자 모드(user mode)</strong>와 <strong>커널 모드(kernel mode)</strong>로 나뉜다. 그리고 mode bit(user mode=1, kernel mode=0)를 통해 두 모드를 구분한다. 일반적으로 사용자 프로세스는 사용자 모드에서는 실행되지만 어떤 특정한 명령들은 커널 모드에서만 실행된다. 이 특정한 명령어들을 <strong>특권 명령(privileged instruction)</strong>이라고 하는데 잘못된 접근으로부터 OS와 사용자를 보호하기 위해 모아놓은 명령어들의 집합을 말한다. 여기에 포함된 명령어들은 OS만이 실행할 수 있다.</p>
+
+<hr />
+
+<h3 id="system-call">System Call</h3>
+<p>만약 CPU가 사용자 프로세스에 포함된 특권 명령을 실행하고자 한다면, 반드시 사용자 모드에서 커널 모드로 전환해야 한다. 프로세스가 특권 명령을 실행하기 위해 <strong>커널 모드로의 전환을 요청하는 인터페이스</strong>를 <strong>시스템 콜(system call)</strong>이라고 한다. 시스템 콜은 trap의 한 종류이기도 하다.</p>
+
+<blockquote>
+  <p>🔎<em>프로세스 A가 디스크로부터 파일을 읽어오는 명령을 실행한다고 했을 때 내부적으로 일어나는 과정은 다음과 같다.</em></p>
+  <ol>
+    <li>프로세스 A가 시스템 콜을 요청하면서 CPU 내에 인터럽트 라인을 세팅한다.</li>
+    <li>CPU는 실행 중이던 명령어를 마치고 인터럽트 라인을 통해 인터럽트가 걸렸음을 인지한다.</li>
+    <li>mode bit를 0으로 바꾸고 OS에게 제어권을 넘긴다.</li>
+    <li>현재 실행 중이던 프로세서의 상태 및 정보를 PCB(process control block)에 저장한다. 그리고 PC(program counter)에는 다음에 실행할 명령어의 주소를 저장한다.</li>
+    <li>시스템 콜 루틴에 해당하는 곳으로 점프하고, 시스템 콜 테이블을 참조하여 파일 읽기에 해당하는 시스템 콜을 실행한다.</li>
+    <li>해당 루틴을 끝내면, mode bit를 1로 바꾸고 PCB에 저장했던 상태들과 PC를 복원시킨다.</li>
+    <li>PC에 저장된 주소(=마지막으로 실행했던 명령어의 다음)로 점프하여 계속 실행한다.</li>
+  </ol>
+</blockquote>
+
+<p>I/O 명령을 실행할 때 CPU의 제어권이 어디로 가냐에 따라 동기식과 비동기식 두 가지로 나뉜다. <strong>동기식 I/O(synchronous I/O)</strong>는 I/O 명령 요청이 완료되어야지만 사용자 프로그램에 제어가 넘어가는 것이다. <strong>비동기식 I/O(asynchronous I/O)</strong>는 I/O 명령이 끝날 때까지 기다리지 않고 사용자 프로그램으로 제어가 넘어가고 I/O가 완료되면 인터럽트로 알린다.</p>
+
+<p>따라서 위의 과정은 동기식 I/O를 기준으로 설명한 것이다. 비동기식 I/O에서는 I/O 명령을 요청하는 5번째부터 조금 다르게 실행된다. 프로세스 A의 정보를 PCB에 저장해두었으므로 다른 프로세스의 PCB를 읽어와서 실행한다. 그리고 I/O 명령을 마치면 디바이스 컨트롤러(device controller)가 CPU에게 인터럽트를 걸 것이다. CPU가 인터럽트를 인지한다면, 실행 중이던 프로세스의 정보를 다시 저장하고  OS에게 제어권을 준다. 그리고 OS는 디바이스 컨트롤러로부터 버퍼에 저장된 데이터를 받아온다. 그리고 I/O를 요청했던 명령어의 메모리 영역에 데이터를 저장하는 과정을 거친다. 프로세스의 상태는 wait에서 ready 상태로 바뀌고 ready queue에 들어가 다음 실행 때까지 기다린다.</p>
+
+<hr />
+
+<h3 id="direct-access-memory">Direct Access Memory</h3>
+<p>많은 양의 데이터를 이동해야 한다면 CPU에게 인터럽트를 많이 걸게 되므로 오버헤드가 발생하게 된다. 오버헤드를 줄이기 위해 CPU의 개입 없이 디바이스 컨트롤러와 메모리 사이에 데이터를 이동하도록 하는 것을 <strong>DMA(direct access memory)</strong>라고 한다.</p>
+
+<p>이 방식을 사용함으로써 얻을 수 있는 점은 CPU가 디바이스와 메모리 사이를 중재할 필요가 사라지기 때문에 CPU는 그동안 다른 일들을 할 수 있다는 것이다. 또한 바이트 단위가 아닌 블록 단위로 인터럽트를 걸기 때문에 오버헤드를 줄일 수 있다.</p>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  --><div id="disqus_thread" style="margin-top:25px"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'https://chowisely.github.io/2020/08/20/OS-Interrupt-SystemCall.html';
+      this.page.identifier = 'https://chowisely.github.io/2020/08/20/OS-Interrupt-SystemCall.html';
+    };
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://chowisely.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+      powered by Disqus.</a></noscript></div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->

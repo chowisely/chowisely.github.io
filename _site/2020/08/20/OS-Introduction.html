@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[Operating Systems] Introduction</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Operating Systems] Introduction | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[Operating Systems] Introduction" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="컴퓨터에 OS가 없다면 어떤 일이 일어나게 될까. 누군가가 이러한 컴퓨터의 상태를 달리는 방법을 모르는 말이라고 했다. 왜 그렇게 비유를 들었는지 이 글을 정리하는 시점에서 이해가 가려한다. 이 글에서는 컴퓨터가 프로그램을 실행하기까지 어떠한 과정을 거치는지, OS는 무엇이고 어떤 역할을 하는지에 대한 내용을 다루어보았다." />
+<meta property="og:description" content="컴퓨터에 OS가 없다면 어떤 일이 일어나게 될까. 누군가가 이러한 컴퓨터의 상태를 달리는 방법을 모르는 말이라고 했다. 왜 그렇게 비유를 들었는지 이 글을 정리하는 시점에서 이해가 가려한다. 이 글에서는 컴퓨터가 프로그램을 실행하기까지 어떠한 과정을 거치는지, OS는 무엇이고 어떤 역할을 하는지에 대한 내용을 다루어보았다." />
+<link rel="canonical" href="https://chowisely.github.io/2020/08/20/OS-Introduction.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/08/20/OS-Introduction.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-20T11:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Operating Systems] Introduction" />
+<script type="application/ld+json">
+{"url":"https://chowisely.github.io/2020/08/20/OS-Introduction.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Operating Systems] Introduction","dateModified":"2020-08-20T11:30:00+09:00","datePublished":"2020-08-20T11:30:00+09:00","description":"컴퓨터에 OS가 없다면 어떤 일이 일어나게 될까. 누군가가 이러한 컴퓨터의 상태를 달리는 방법을 모르는 말이라고 했다. 왜 그렇게 비유를 들었는지 이 글을 정리하는 시점에서 이해가 가려한다. 이 글에서는 컴퓨터가 프로그램을 실행하기까지 어떠한 과정을 거치는지, OS는 무엇이고 어떤 역할을 하는지에 대한 내용을 다루어보았다.","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/08/20/OS-Introduction.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+  <link href="https://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="알고리즘">알고리즘</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="MST">MST</span>
+        
+            <span class="tag" data-tag="union-find">Union-Find</span>
+        
+            <span class="tag" data-tag="구현">구현</span>
+        
+            <span class="tag" data-tag="os">OS</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+            <span class="tag" data-tag="compiler">Compiler</span>
+        
+      </div>
+
+    </section>
+
+    <section class="content">
+      <ul class="posts">
+<li class="posts-labelgroup" id="posts-labelgroup">
+  <h1 id="posts-label">posts</h1>
+  
+  <div class="search-container">
+    <div class="search-section">
+      <i class="icon-search"></i>
+      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
+    </div>
+    <div class="search-results" id="search-results" data-placeholder="No Results" style="display: none;"></div>
+  </div>
+  
+</li>
+</ul><div class="post-container">
+  <a class="post-link" href="/2020/08/20/OS-Introduction.html">
+    <h2 class="post-title">[Operating Systems] Introduction</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Aug 20, 2020 
+
+3 min to read
+
+
+    </div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="os">OS</span>
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <p>컴퓨터에 OS가 없다면 어떤 일이 일어나게 될까. 누군가가 이러한 컴퓨터의 상태를 달리는 방법을 모르는 말이라고 했다. 왜 그렇게 비유를 들었는지 이 글을 정리하는 시점에서 이해가 가려한다. 이 글에서는 컴퓨터가 프로그램을 실행하기까지 어떠한 과정을 거치는지, OS는 무엇이고 어떤 역할을 하는지에 대한 내용을 다루어보았다.</p>
+
+<p><img src="https://images.velog.io/images/chowisely/post/1d02aea4-bad6-4dfe-9a8c-d74b5dbabde7/OS1_1.png" alt="" /></p>
+
+<p>위 그림은 하나의 프로그램이 컴퓨터에서 어떻게 실행되는지 하드웨어적인 측면에서 그림을 그린 것이다.</p>
+
+<p>하나의 프로그램(program)은 a set of instructions, 명령어들의 집합이다. 이 명령어는 컴퓨터가 알아들을 수 있도록 되어있다. 컴퓨터 공학에서 흔히 말하는 프로그램은 단지 하드디스크(hdd)에 물리적으로 저장된 파일에 불과하다. 하드디스크에 있는 프로그램을 실행해야지만 비로소 우리가 원하는 바를 컴퓨터에서 처리해줄 수 있다.</p>
+
+<p>실행 중인 프로그램은 <strong>프로세스</strong>(process)라고 한다. 프로그램이 프로세스가 되기 위해서는 하드디스크에서 메인 메모리(main memery)에 적재(load)되어야 한다. 그럼 메인 메모리에 올라와 있기만 하면 실행되는 것이냐? 그건 또 아니다. 메인 메모리에 적재된 여러 프로세스 중 하나를 프로세서(processor)가 실행시켜야만 한다. 그림에서는 프로세서(processor)에 프로세스 하나가 들어있다고 표기해두었지만, 엄밀히 말하자면 프로세서는 명령어를 실행하는 것이다. PC라는 레지스터에는 다음에 실행할 명령어의 주소를 담고 있는데, 메모리에 접근하여 이 주소에 해당하는 명령어를 가져와 프로세서가 실행시키는 것이다.</p>
+
+<hr />
+
+<h3 id="다중-프로그래밍multiprogramming">다중 프로그래밍(Multiprogramming)</h3>
+<p>다중 프로그래밍이란 다수의 프로세스를 메인 메모리에 올려두고, 프로세서에 의해 실행되는 프로세스들이 교체되는 것이다. 지금이야 거의 모든 컴퓨터들이 다중 프로그래밍을 지원하기 때문에 동시에 여러 프로그램을 실행시키는 것이 당연하다고 생각할지 모른다. 하지만 사실 컴퓨터를 사용했던 초기에는 다중 프로그래밍이라는 개념이 없었다. 따라서 메인 메모리에는 하나의 프로세스만이 적재되었고, 프로세서에 의해 실행되는 프로세스도 중간에 교체되는 일이 없었다.</p>
+
+<p>다중 프로그래밍이라는 개념이 등장하게 된 배경은 이렇다. 하나의 프로세스는 프로세서를 적극적으로 활용하는 연산을 하기도 하지만, I/O 연산도 포함되어 있다. I/O 연산은 매우 빠른 CPU 처리 속도에 비해 아주 느리다. 그러면 한 프로세스가 I/O 연산을 하는 도중에는 I/O 연산이 끝날 때까지 프로세서는 유휴 상태로 대기하게 된다. CPU가 얼마나 비싼지 알면 매우 큰 낭비가 아닐 수 없다. 다중 프로그래밍은 프로세스가 <strong>I/O 연산으로 인해 유휴 상태가 된다면, 메인 메모리에 대기하고 있는 다른 프로세스를 실행시켜 CPU의 이용률을 높이는 것</strong>이다.</p>
+
+<p>CPU의 이용률 높이는 것은 좋지만 그로 인해 이전에는 없었던 점들이 생겼다. 같은 공간에서 다수의 프로세스를 동작시키면서 CPU 이용률을 높이기 위해서는 다음을 고려해야 한다.</p>
+
+<ol>
+  <li>다음에 실행할 프로세스를 어떠한 기준으로 선택할 것인지 =&gt; <strong>CPU scheduling</strong></li>
+  <li>메인 메모리에 여러 프로세스가 적재된다면 각 프로세스에 주어진 메모리 공간을 어떻게 관리할 것인지 =&gt; <strong>memory management</strong></li>
+  <li>한 프로세스의 메모리 공간을 어떻게 다른 프로세스가 침범하지 못하게 보호할 것인지 =&gt; <strong>memory protection</strong></li>
+</ol>
+
+<hr />
+
+<h3 id="시분할-시스템time-sharing">시분할 시스템(Time-Sharing)</h3>
+<p>다중 프로그래밍 이후에는 시분할 시스템이 등장했다. 기존의 다중 프로그래밍의 경우, 프로세서에 의해 프로세스가 실행될 기회는 프로세서에 의해 실행되고 있는 프로세스가 I/O 연산을 실행하는 경우에 주어진다. 하지만 다중 사용자가 있는 시스템에서 그렇게 동작한다면, 전체 사용자들이 골고루 시스템을 이용할 수가 없다. 따라서 <strong>모든 사용자들이 공평하게</strong> 시스템을 사용하기 위해, 프로세서를 이용하는 프로세스를 <strong>일정한 단위 시간마다</strong> 강제로 바꿔주는 방법이 시분할 시스템이다.</p>
+
+<hr />
+
+<blockquote>
+  <p>🔎<em>OS는 그 자체로써 동작하는 것이 아니라 목적에 따라 다음과 같이 여러 부분으로 나뉜다.</em></p>
+  <ol>
+    <li>프로세스 관리</li>
+    <li>메모리 관리</li>
+    <li>저장장치 관리</li>
+    <li>보호(CPU, 메모리, I/O 디바이스)</li>
+    <li>보안</li>
+    <li>네트워킹</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <p>🔎<em>OS가 컴퓨터에서 여러 서비스들을 제공함으로써 이루고자 하는 전반적인 목적은 이렇다.</em></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>하드웨어와 애플리케이션의 중간자</strong>:
+하드웨어를 추상화시켜 사용자들이 하드웨어가 어떻게 작동하는지 알 필요 없이 프로그램을 쉽게 작성할 수 있도록 한다.
+애플리케이션을 추상화시켜 애플리케이션들 간의 소통을 가능하게 한다.
+애플리케이션이 다양한 하드웨어를 조작할 수 있도록 간단하고 일관된 관점을 제공한다.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>제어 프로그램</strong>:
+프로세스에서 에러가 발생하거나 프로세스가 하드웨어를 오용하거나 남용할 경우 이를 제어한다.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>자원 관리자</strong>:
+모든 컴퓨터 자원을 관리하고, 동시에 동일한 자원을 사용하고자 하는 프로세스들에게 자원을 효율적이고 공평하게 나누어준다.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>플랫폼 제공</strong>:
+여러 소프트웨어 프로그램을 묶어서 하나의 큰 컴퓨터 시스템으로 합치는 플랫폼을 제공하여 소프트웨어 생산성을 높인다.</p>
+</blockquote>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  --><div id="disqus_thread" style="margin-top:25px"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'https://chowisely.github.io/2020/08/20/OS-Introduction.html';
+      this.page.identifier = 'https://chowisely.github.io/2020/08/20/OS-Introduction.html';
+    };
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://chowisely.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+      powered by Disqus.</a></noscript></div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->

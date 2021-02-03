@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[Operating Systems] Memory Management 1</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Operating Systems] Memory Management 1 | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[Operating Systems] Memory Management 1" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="OS의 메모리 관리 역할에 대해 알아보자." />
+<meta property="og:description" content="OS의 메모리 관리 역할에 대해 알아보자." />
+<link rel="canonical" href="https://chowisely.github.io/2020/08/20/OS-MemoryManagement1.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/08/20/OS-MemoryManagement1.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-20T14:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Operating Systems] Memory Management 1" />
+<script type="application/ld+json">
+{"url":"https://chowisely.github.io/2020/08/20/OS-MemoryManagement1.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Operating Systems] Memory Management 1","dateModified":"2020-08-20T14:30:00+09:00","datePublished":"2020-08-20T14:30:00+09:00","description":"OS의 메모리 관리 역할에 대해 알아보자.","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/08/20/OS-MemoryManagement1.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+  <link href="https://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="알고리즘">알고리즘</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="MST">MST</span>
+        
+            <span class="tag" data-tag="union-find">Union-Find</span>
+        
+            <span class="tag" data-tag="구현">구현</span>
+        
+            <span class="tag" data-tag="os">OS</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+            <span class="tag" data-tag="compiler">Compiler</span>
+        
+      </div>
+
+    </section>
+
+    <section class="content">
+      <ul class="posts">
+<li class="posts-labelgroup" id="posts-labelgroup">
+  <h1 id="posts-label">posts</h1>
+  
+  <div class="search-container">
+    <div class="search-section">
+      <i class="icon-search"></i>
+      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
+    </div>
+    <div class="search-results" id="search-results" data-placeholder="No Results" style="display: none;"></div>
+  </div>
+  
+</li>
+</ul><div class="post-container">
+  <a class="post-link" href="/2020/08/20/OS-MemoryManagement1.html">
+    <h2 class="post-title">[Operating Systems] Memory Management 1</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Aug 20, 2020 
+
+4 min to read
+
+
+    </div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="os">OS</span>
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <p>OS의 메모리 관리 역할에 대해 알아보자.</p>
+
+<p>OS는 사용자에게 메모리에 대한 추상화를 제공할 뿐만 아니라 메모리 관리(memory management)를 통해 한정된 메모리 자원을 <strong>효율적으로 사용</strong>하고 <strong>메모리를 보호</strong>한다. 또한 메모리 관리는 각 프로세스들에 할당된 메모리 정보와 비어있는 메모리 공간에 대한 정보 관리를 포함한다.</p>
+
+<p>메모리를 효율적으로 사용한다는 것은 곧 메모리 낭비가 없어야 한다는 뜻이다. OS의 메모리 관리자는 MMU(memory management unit)과 협업하여 프로세스의 적재 요청이 있으면 메모리를 할당하고, 필요 없으면 해당 메모리를 해제하여 다른 프로세스에게 내어준다.</p>
+
+<p>메모리 관리 정책은 <strong>fetch, placement, replacement</strong> 세 가지로 구분한다. fetch는 디스크에서 메모리로 프로세스를 올릴 시기를 결정하고, placement는 어느 메모리의 위치에 프로세스를 적재할 것인지 결정한다. replacement는 프로세스에 더이상 할당할 메모리 여유분이 없을 때 어떤 프로세스의 메모리를 내어줄지 결정한다. 다음 글에서도 이어지겠지만, placement는 first-fit, best-fit, worst-fit, replacement는 FIFO, Optimal, LRU, Second chance algorithm과 관련이 있다.</p>
+
+<p>이 글에서는 메모리 관리 중에서도 <strong>주소 바인딩(address binding)</strong>과 <strong>스와핑</strong>에 대해서 설명할 것이다.</p>
+
+<hr />
+
+<h3 id="address-binding">Address Binding</h3>
+<blockquote>
+  <p>🔎<em>주소 바인딩을 언제 하느냐로 구분하면 세 가지로 나눌 수 있다.</em></p>
+  <ol>
+    <li>컴파일 시: 프로세스가 적재될 위치가 컴파일 시에 알려지고 시작 위치가 변경되면 컴파일을 다시 해야 한다. 컴파일러는 절대 코드(absolute code)를 생성하게 된다.</li>
+    <li>적재 시: 컴파일러가 상대 주소를 사용하여 재배치 가능 코드를 생성한 경우 로더(loader)가 물리적 주소를 부여할 수 있다. 만약 시작 주소가 변하면 변화된 값을 반영하기 위해 프로세스를 재적재해야 한다.</li>
+    <li>런타임 시: 런타임까지 바인딩이 연기되면 <strong>재배치 목적 레지스터만 바꿔주면</strong> 메모리 상에서 위치를 옮길 수 있다. 이 경우에는 CPU가 논리적 주소로 메모리를 참조할 때마다 <strong>물리적 주소로의 바인딩이 유효한지</strong> 점검하는 하드웨어적인 지원이 필요하다.</li>
+  </ol>
+</blockquote>
+
+<p>‘컴파일러’, ‘로더’가 물리적 주소를 부여하면, 시작 주소가 바뀌면 각각 ‘컴파일’, ‘로딩’을 다시 해야한다.</p>
+
+<hr />
+
+<h3 id="dynamic-loading">Dynamic Loading</h3>
+<p>프로그램 실행에 반드시 <strong>필요한 루틴만 적재</strong>함으로써 메모리를 효율적으로 사용할 수 있는 방법이다. 모든 루틴이 아닌 필요한 루틴만 메모리에 적재하고 <strong>나머지는 재배치 가능한 형태로 디스크에 저장</strong>한다. 메인 프로그램에서 어떠한 루틴을 호출하면 해당 루틴이 메모리에 적재되어 있는지 먼저 확인하고, 그렇지 않다면 디스크로부터 해당 루틴을 적재한다.</p>
+
+<p>예를 들어서, 에러 핸들링이 프로그램의 20%를 차지한다고 하자. 보통의 경우에는 에러 핸들링이 실행 과정에서 호출되는 경우는 드물다. 따라서 에러 핸들링 루틴을 디스크에 저장해두게 되면 그만큼의 메모리를 절약하여 다른 프로세스를 적재시킬 수 있는 것이다.</p>
+
+<hr />
+
+<h3 id="dynamic-linking">Dynamic Linking</h3>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// p1.c</span>
+<span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"P1 hello world!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// p2.c</span>
+<span class="cp">#include &lt;stdio.h&gt;
+</span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"P2 hello world!"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 두 코드를 컴파일할 때 printf가 존재하는 라이브러리를 포함시켜 실행 파일을 만든다고 하자.</p>
+
+<p>링커에 의해 p1.o와 printf.o, p2.o와 printf.o가 묶여 두 개의 실행 파일이 만들어질 것이다. 이들이 동시에 메모리에 적재되어 있다면, printf에 해당하는 라이브러리가 메모리에 중복되어 메모리 낭비로 이어진다. 이처럼 컴파일 시에 라이브러리를 포함시키는 것을 <strong>static linking</strong>이라고 한다. 프로그램 내에 라이브러리를 포함시키면 overhead는 작아지지만 메모리의 비효율적인 사용의 위험이 있다.</p>
+
+<p>반면에 printf를 호출할 때마다 런타임에 printf.o를 링킹하는 것을 <strong>dynamic linking</strong>이라고 한다. 실행 파일을 생성할 때 printf.o를 포함하지 않아 메모리에 중복으로 적재될 가능성이 사라진다.</p>
+
+<hr />
+
+<h3 id="swapping">Swapping</h3>
+<p>이전 글에서 중기 스케쥴러에 대해 말하면서 스와핑을 언급한 적이 있었다.</p>
+
+<p>스와핑은 메모리에 적재되어 있으나 현재 사용되고 있지 않은 프로세스 이미지를 디스크에 있는 <strong>스왑 영역(backing store)</strong>으로 <strong>스왑 아웃(swap-out)</strong>하여 내보내고, 후에 프로세스 이미지를 <strong>스왑 인(swap-in)</strong>하여 다시 메모리에 적재하는 것을 말한다. 스와핑에 소요되는 시간은 대부분 전송 시간이고, 전송 시간은 프로세스 이미지의 크기에 비례한다. 따라서 너무 자주 스와핑을 하는 것도 성능상 좋지 않을 수 있다.</p>
+
+<p>하나 생각해야할 점은 스왑 아웃되었다가 스왑 인되는 프로세스는 이전에 위치했던 메모리 주소로 다시 돌아갈 확률이 매우 낮다는 거다. 그래서 스와핑을 지원하기 위해서는 프로세스의 물리적 주소가 <strong>재배치가 가능한 것</strong>이 좋다. 컴파일 시와 적재 시 주소 바인딩을 하게 되면 반드시 원래 주소로 돌아와야만 한다. 하지만 런타임 시 주소 바인딩을 사용하면 반드시 같은 주소로 돌아올 필요가 없고 <strong>재배치 레지스터(relocation register)</strong>만 바꿔주면 된다.</p>
+
+<hr />
+
+<h3 id="mmumemory-management-unit">MMU(Memory Management Unit)</h3>
+<p><strong>런타임 시 주소 바인딩</strong>을 하게 되면, 접근하고자 하는 메모리의 논리적 주소를 물리적 주소로 바꿔주어야 한다. 이를 담당하는 것이 <strong>MMU</strong>이다. <strong>기준 레지스터(base register 혹은 relocation register)</strong>와 <strong>경계 레지스터(limit register)</strong>를 가지고 사용자 모드에서 메모리로의 접근이 유효한지 검사한다.</p>
+
+<p>조금 더 자세히 말하자면, 사용자 프로세스는 0~X라는 논리적 주소를 가지며 100이라는 주소에 접근하고 싶고, MMU는 해당 프로세스에 대해서 기준 레지스터는 500, 경계 레지스터는 1000을 가지고 있다고 하자. CPU가 메모리 상의 주소 100에 접근하기 이전에 MMU를 통과하게 된다. MMU는 논리적 주소 100을 받아 기준 레지스터에 더하고, 그 값이 기준 레지스터와 경계 레지스터의 합보다 작은지 검사함으로써 유효한 접근인지 판단한다. 이 경우 100 + 500 &lt; 500 + 1000이므로 논리적 주소 100은 물리적 주소 600으로 변환되고 메모리에 유효한 접근을 하게 된다. 즉, CPU는 주소 100에 접근한다고 생각하지만 사실은 그렇지 않은 것이다.</p>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  --><div id="disqus_thread" style="margin-top:25px"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'https://chowisely.github.io/2020/08/20/OS-MemoryManagement1.html';
+      this.page.identifier = 'https://chowisely.github.io/2020/08/20/OS-MemoryManagement1.html';
+    };
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://chowisely.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+      powered by Disqus.</a></noscript></div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->

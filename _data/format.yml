@@ -6,6 +6,7 @@ bfs: BFS
 MST: MST
 union-find: Union-Find
 구현: 구현
+이분탐색: 이분탐색
 os: OS
 architecture: Architecture
 algorithm: Algorithm

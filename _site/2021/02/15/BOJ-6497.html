@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[BOJ] 6497번 전력난</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[BOJ] 6497번 전력난 | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[BOJ] 6497번 전력난" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="문제 바로가기" />
+<meta property="og:description" content="문제 바로가기" />
+<link rel="canonical" href="localhost:3002/2021/02/15/BOJ-6497.html" />
+<meta property="og:url" content="localhost:3002/2021/02/15/BOJ-6497.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-15T11:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[BOJ] 6497번 전력난" />
+<script type="application/ld+json">
+{"url":"localhost:3002/2021/02/15/BOJ-6497.html","author":{"@type":"Person","name":"chowisely"},"headline":"[BOJ] 6497번 전력난","dateModified":"2021-02-15T11:30:00+09:00","datePublished":"2021-02-15T11:30:00+09:00","description":"문제 바로가기","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"localhost:3002/2021/02/15/BOJ-6497.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+  <link href="https://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="알고리즘">알고리즘</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="MST">MST</span>
+        
+            <span class="tag" data-tag="union-find">Union-Find</span>
+        
+            <span class="tag" data-tag="구현">구현</span>
+        
+            <span class="tag" data-tag="이분탐색">이분탐색</span>
+        
+            <span class="tag" data-tag="os">OS</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+            <span class="tag" data-tag="compiler">Compiler</span>
+        
+      </div>
+
+    </section>
+
+    <section class="content">
+      <ul class="posts">
+<li class="posts-labelgroup" id="posts-labelgroup">
+  <h1 id="posts-label">posts</h1>
+  
+  <div class="search-container">
+    <div class="search-section">
+      <i class="icon-search"></i>
+      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
+    </div>
+    <div class="search-results" id="search-results" data-placeholder="No Results" style="display: none;"></div>
+  </div>
+  
+</li>
+</ul><div class="post-container">
+  <a class="post-link" href="/2021/02/15/BOJ-6497.html">
+    <h2 class="post-title">[BOJ] 6497번 전력난</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Feb 15, 2021 
+
+4 min to read
+
+
+    </div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="알고리즘">알고리즘</span>
+          
+        
+          
+              <span class="tag" data-tag="MST">MST</span>
+          
+        
+          
+              <span class="tag" data-tag="union-find">Union-Find</span>
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <h4 id="문제-바로가기"><a href="https://www.acmicpc.net/problem/6497">문제 바로가기</a></h4>
+
+<h4 id="접근">접근</h4>
+<p>우선순위 큐에 길 정보를 모두 담고 Kruskal 알고리즘으로 풀면 되는데, 절약할 수 있는 최대 비용을 구하는 거라 모든 길의 합에서 연결시킨 길의 합을 뺀 값을 구해야 한다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="nc">Edge</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">z</span><span class="p">;</span>
+
+  <span class="n">Edge</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">z</span><span class="p">)</span> <span class="o">:</span> <span class="n">x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">z</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">comparator</span> <span class="p">{</span>
+  <span class="kt">bool</span> <span class="k">operator</span><span class="p">()</span> <span class="p">(</span><span class="n">Edge</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="n">Edge</span> <span class="k">const</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">z</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+
+<span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">total</span><span class="p">,</span> <span class="n">cost</span><span class="p">,</span> <span class="n">cnt</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">parent</span><span class="p">;</span>
+
+
+<span class="kt">int</span> <span class="nf">find</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span> <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">parent</span><span class="p">[</span><span class="n">x</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="kt">int</span> <span class="n">n1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">n1</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">n1</span><span class="p">);</span>
+  <span class="n">n2</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">n2</span><span class="p">);</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">n1</span> <span class="o">!=</span> <span class="n">n2</span><span class="p">)</span> <span class="n">parent</span><span class="p">[</span><span class="n">n2</span><span class="p">]</span> <span class="o">=</span> <span class="n">n1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span> <span class="nf">isCyclic</span><span class="p">(</span><span class="kt">int</span> <span class="n">n1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">find</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span> <span class="o">==</span> <span class="n">find</span><span class="p">(</span><span class="n">n2</span><span class="p">))</span> <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="n">merge</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span> <span class="n">cout</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
+
+  <span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">m</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">m</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">Edge</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">comparator</span><span class="o">&gt;</span> <span class="n">pq</span><span class="p">;</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">cost</span> <span class="o">=</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">parent</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="n">parent</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="n">y</span> <span class="o">&gt;&gt;</span> <span class="n">z</span><span class="p">;</span>
+      <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">Edge</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">pq</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">cnt</span> <span class="o">==</span> <span class="n">m</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+      <span class="n">Edge</span> <span class="n">e</span> <span class="o">=</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+      <span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+      <span class="n">total</span> <span class="o">+=</span> <span class="n">e</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+
+      <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">isCyclic</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">e</span><span class="p">.</span><span class="n">y</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">cost</span> <span class="o">+=</span> <span class="n">e</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+        <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">total</span> <span class="o">-</span> <span class="n">cost</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  --><div id="disqus_thread" style="margin-top:25px"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = 'localhost:3002/2021/02/15/BOJ-6497.html';
+      this.page.identifier = 'localhost:3002/2021/02/15/BOJ-6497.html';
+    };
+    (function () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://chowisely.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
+      powered by Disqus.</a></noscript></div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->

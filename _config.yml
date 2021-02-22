@@ -14,7 +14,7 @@ plainwhite:
   tagline: undergraduate in CS
   motto: honesty integrity excellence
   date_format: "%b %-d, %Y"
-  disqus_shortname: chowisely
+  #disqus_shortname: chowisely
   sitemap: true # set to true to generate sitemap.xml content
   search: true # set to true to enable searchbar
   dark_mode: true # set to true to add dark mode toggle
@@ -40,12 +40,21 @@ plainwhite:
 #header_pages:
 # - about.md
 
+collections:
+  blog:
+    output: true
+    permalink: /:collection/:name
+
 # Build settings
 theme: plainwhite
 
 plugins:
   - jekyll-seo-tag
+  - jekyll-paginate
 #- jekyll-feed
+
+paginate: 10
+#paginate_path: "/blog/page:num"
 
 exclude:
   - Gemfile
@@ -55,5 +64,5 @@ exclude:
 
 highlighter: rouge
 
-#url: localhost:3000
+#url: localhost:3002
 url: https://chowisely.github.io

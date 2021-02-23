@@ -1,6 +1,90 @@
 [
   
     {
+      "title"    : "[BOJ] 1763번 최단경로",
+      "title-lower"    : "[boj] 1763번 최단경로",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘다익스트라",
+      "tags"     : "알고리즘, 다익스트라",
+      "url"      : "/2021/02/23/BOJ-1763.html",
+      "date"     : "2021-02-23 11:30:00 +0900",
+      "content"     : "문제 바로가기접근다익스트라 문제를 풀 땐 Greedy 기법을 위한 우선순위 큐를 기억해야 한다.크게 연관은 없지만 C++에서 우선순위 큐는 기본적으로 내림차순이다. 따라서 오름차순으로 구현하려면, 우선순위에 마이너스를 붙여주거나 compare 구조체를 따로 만들어야 한다. (ex. vector&amp;lt;Student, vector, comp&amp..."
+    } ,
+  
+    {
+      "title"    : "[BOJ] 9663번 N-Queen",
+      "title-lower"    : "[boj] 9663번 n-queen",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘구현dfs",
+      "tags"     : "알고리즘, 구현, dfs",
+      "url"      : "/2021/02/22/BOJ-9663.html",
+      "date"     : "2021-02-22 11:30:00 +0900",
+      "content"     : "문제 바로가기접근 1N개의 퀸을 서로 공격할 수 없게 N*N 크기의 체스판에 놓는 방법은 한 퀸의 상하좌우, 대각선으로 어떠한 퀸도 놓지 않는 것이다.0번째 행부터 시작해서 가능한 열에 퀸을 놓고, 유망성을 판단하여 해당 노드를 더 탐색해야 하는지 결정한다. 유망성은 이전에 놓은 퀸들의 열 중에서 새로 놓은 퀸의 열과 일치하는 것이 있는지, 이전에 놓..."
+    } ,
+  
+    {
+      "title"    : "[BOJ] 6497번 전력난",
+      "title-lower"    : "[boj] 6497번 전력난",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘MSTunion-find",
+      "tags"     : "알고리즘, MST, union-find",
+      "url"      : "/2021/02/15/BOJ-6497.html",
+      "date"     : "2021-02-15 11:30:00 +0900",
+      "content"     : "문제 바로가기접근우선순위 큐에 길 정보를 모두 담고 Kruskal 알고리즘으로 풀면 되는데, 절약할 수 있는 최대 비용을 구하는 거라 모든 길의 합에서 연결시킨 길의 합을 뺀 값을 구해야 한다.#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;struct Edge {  int x;  int y;  ..."
+    } ,
+  
+    {
+      "title"    : "[BOJ] 2512번 예산",
+      "title-lower"    : "[boj] 2512번 예산",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘이분탐색",
+      "tags"     : "알고리즘, 이분탐색",
+      "url"      : "/2021/02/11/BOJ-2512.html",
+      "date"     : "2021-02-11 11:30:00 +0900",
+      "content"     : "문제 바로가기접근이분 탐색으로 풀 때 초기 탐색의 low와 high를 어떤 값으로 할지 잘 생각하고 풀어야 한다.이 문제에서는 어떠한 지방에게도 요청한 금액을 주지 못할 수도 있으므로 low를 0으로 설정해야 한다.#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int N;long long M;v..."
+    } ,
+  
+    {
+      "title"    : "[BOJ] 17135번 캐슬 디펜스",
+      "title-lower"    : "[boj] 17135번 캐슬 디펜스",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘구현dfs",
+      "tags"     : "알고리즘, 구현, dfs",
+      "url"      : "/2021/02/05/BOJ-17135.html",
+      "date"     : "2021-02-05 11:30:00 +0900",
+      "content"     : "문제 바로가기[삼성 역량 테스트 A형 기출문제]접근삼성 역테답게 구현+그래프 탐색의 조합으로 푸는 문제다.궁수를 배치할 수 있는 경우의 수에 대하여 시뮬레이션을 한 뒤, 적을 제외시킬 수 있는 최대값을 구하면 되겠다. 고려해야 할 점으로는, 모든 궁수들이 적을 선택한 후에 적을 제외한다는 것(동일한 적이 존재할 수 있음)과 같은 거리에 있는 적이 여럿..."
+    } ,
+  
+    {
+      "title"    : "[BOJ] 17472번 다리 만들기 2",
+      "title-lower"    : "[boj] 17472번 다리 만들기 2",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘구현bfs",
+      "tags"     : "알고리즘, 구현, bfs",
+      "url"      : "/2021/02/04/BOJ-17472.html",
+      "date"     : "2021-02-04 11:30:00 +0900",
+      "content"     : "문제 바로가기접근BFS로 각각의 섬들에 번호를 부여한 뒤, 임의의 두 섬을 이을 수 있는 간선들(길이 &amp;gt;= 2)을 우선순위 큐에 담았다. 이후에는 최소 스패닝 트리를 구하는 과정과 동일하다.두 섬을 잇는 간선은 상하좌우 네 방향에 대해서 탐색하도록 한다.#include &amp;lt;bits/stdc++.h&amp;gt;using name..."
+    } ,
+  
+    {
+      "title"    : "[BOJ] 11559번 Puyo Puyo",
+      "title-lower"    : "[boj] 11559번 puyo puyo",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "알고리즘구현bfs",
+      "tags"     : "알고리즘, 구현, bfs",
+      "url"      : "/2021/02/03/BOJ-11559.html",
+      "date"     : "2021-02-03 11:30:00 +0900",
+      "content"     : "문제 바로가기접근그래프 탐색을 응용하는 구현 문제이다.전체 맵에서 한 번 훑어 터트릴 수 있는 뿌요를 벡터에 모두 담아준다. 훑은 다음, 벡터에 담겨 있는 모든 위치를 빈 공간으로 만들고, 바닥과 뿌요 사이에 빈 공간이 남지 않을 때까지 뿌요들을 내려준다.#include &amp;lt;bits/stdc++.h&amp;gt;using namespace ..."
+    } ,
+  
+    {
       "title"    : "[BOJ] 2636번 치즈",
       "title-lower"    : "[boj] 2636번 치즈",
       "sub-titile" : "",
@@ -141,7 +225,7 @@
       "tags"     : "algorithm, sort",
       "url"      : "/2020/08/29/Algorithm-Sorting3.html",
       "date"     : "2020-08-29 12:30:00 +0900",
-      "content"     : "Counting Sort특이하게도 counting sort는 정렬 알고리즘이지만 비교 연산을 하지 않는다. 이름처럼 해당 숫자를 ‘카운팅’할 뿐이다. 정렬하고자 하는 숫자들의 범위가 주어져야 하는 것이 조건이다.[3,2,2,1,4,1] (4 이하의 음이 아닌 정수들이라는 조건이 미리 주어진다.)각 숫자의 값들을 인덱스라고 하고, 해당하는 인덱스에 위치..."
+      "content"     : "시간 복잡도가 O(N)인 정렬 알고리즘을 하나를 알아보자.Counting Sort특이하게도 counting sort는 정렬 알고리즘이지만 비교 연산을 하지 않는다. 이름처럼 해당 숫자를 ‘카운팅’할 뿐이다. 정렬하고자 하는 숫자들의 범위가 주어져야 하는 것이 조건이다.[3,2,2,1,4,1] (4 이하의 음이 아닌 정수들이라는 조건이 미리 주어진다.)..."
     } ,
   
     {
@@ -175,7 +259,7 @@
       "sub-titile-lower" : "",
       "categories" : "compiler",
       "tags"     : "compiler",
-      "url"      : "/2020/08/22/CompilerTheory-Top-Down-Parsing.html",
+      "url"      : "/2020/08/22/CompilerTheory-TopDownParsing.html",
       "date"     : "2020-08-22 12:30:00 +0900",
       "content"     : "하향식 구문 분석에 대해 알아보자.하향식 구문 분석(top-down parsing)는 시작 기호부터 좌단 유도를 적용하면서 문장을 찾는다. 파스 트리는 루트 노드에서 시작해 터미널 노드까지 확장해 나간다. 상향식 구문 분석(bottom-up parsing)에 비해 구현이 간단하지만 역추적(backtracking) 문제 때문에 잘 사용되지 않는다.하향식..."
     } ,
@@ -202,6 +286,54 @@
       "url"      : "/2020/08/22/CompilerTheory-ChomskyHierarchy.html",
       "date"     : "2020-08-22 11:30:00 +0900",
       "content"     : "촘스키 계층 구조에 대해 알아보자.            Type      Name      Rule      Recognizer                  0      Recursively Enummerable Language      아무런 제약이 없음      Turing Machine              1      Context Sens..."
+    } ,
+  
+    {
+      "title"    : "[Operating Systems] Memory Management 1",
+      "title-lower"    : "[operating systems] memory management 1",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "os",
+      "tags"     : "os",
+      "url"      : "/2020/08/20/OS-MemoryManagement1.html",
+      "date"     : "2020-08-20 14:30:00 +0900",
+      "content"     : "OS의 메모리 관리 역할에 대해 알아보자.OS는 사용자에게 메모리에 대한 추상화를 제공할 뿐만 아니라 메모리 관리(memory management)를 통해 한정된 메모리 자원을 효율적으로 사용하고 메모리를 보호한다. 또한 메모리 관리는 각 프로세스들에 할당된 메모리 정보와 비어있는 메모리 공간에 대한 정보 관리를 포함한다.메모리를 효율적으로 사용한다는..."
+    } ,
+  
+    {
+      "title"    : "[Operating Systems] Process &amp; Thread",
+      "title-lower"    : "[operating systems] process &amp; thread",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "os",
+      "tags"     : "os",
+      "url"      : "/2020/08/20/OS-Process-Thread.html",
+      "date"     : "2020-08-20 13:30:00 +0900",
+      "content"     : "OS의 프로세스 및 스레드 관리에 대해 알아보자.프로세스란 실행 중인 프로그램을 의미한다. 프로세스는 PC와 레지스터를 포함한 현재 상태, 텍스트(=프로그램 코드), 스택(=임시 데이터), 데이터(=전역 변수), 힙으로 이루어져 있다.Process State위 그림은 프로세스의 상태 변화를 나타낸 그림으로 총 5가지 상태로 나눌 수 있다.New: 프로..."
+    } ,
+  
+    {
+      "title"    : "[Operating Systems] Interrupt &amp; System Call",
+      "title-lower"    : "[operating systems] interrupt &amp; system call",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "os",
+      "tags"     : "os",
+      "url"      : "/2020/08/20/OS-Interrupt-SystemCall.html",
+      "date"     : "2020-08-20 12:30:00 +0900",
+      "content"     : "OS의 인터럽트 관리에 대해 알아보자.“OS is interrupt-driven.”Interrupt일반적으로 인터럽트(interrupt)는 하드웨어가 어떠한 이벤트를 CPU에게 알리기 위해서 사용하는 방법이다. 하지만 실행 중인 프로세스가 CPU 내의 인터럽트 라인을 세팅하여 인터럽트를 걸기도 한다. 전자를 비동기식 인터럽트(asynchronous i..."
+    } ,
+  
+    {
+      "title"    : "[Operating Systems] Introduction",
+      "title-lower"    : "[operating systems] introduction",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "os",
+      "tags"     : "os",
+      "url"      : "/2020/08/20/OS-Introduction.html",
+      "date"     : "2020-08-20 11:30:00 +0900",
+      "content"     : "컴퓨터에 OS가 없다면 어떤 일이 일어나게 될까. 누군가가 이러한 컴퓨터의 상태를 달리는 방법을 모르는 말이라고 했다. 왜 그렇게 비유를 들었는지 이 글을 정리하는 시점에서 이해가 가려한다. 이 글에서는 컴퓨터가 프로그램을 실행하기까지 어떠한 과정을 거치는지, OS는 무엇이고 어떤 역할을 하는지에 대한 내용을 다루어보았다.위 그림은 하나의 프로그램이 ..."
     } ,
   
     {

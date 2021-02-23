@@ -6,9 +6,44 @@
                 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
         <url>
             <loc>https://chowisely.github.io</loc>
-	    <lastmod>2021-01-30T19:46:34+09:00</lastmod>
+	    <lastmod>2021-02-23T14:25:28+09:00</lastmod>
             <priority>1.00</priority>
         </url><url>
+                <loc>https://chowisely.github.io/2021/02/23/BOJ-1763.html</loc>
+                <lastmod>2021-02-23T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2021/02/22/BOJ-9663.html</loc>
+                <lastmod>2021-02-22T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2021/02/15/BOJ-6497.html</loc>
+                <lastmod>2021-02-15T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2021/02/11/BOJ-2512.html</loc>
+                <lastmod>2021-02-11T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2021/02/05/BOJ-17135.html</loc>
+                <lastmod>2021-02-05T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2021/02/04/BOJ-17472.html</loc>
+                <lastmod>2021-02-04T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2021/02/03/BOJ-11559.html</loc>
+                <lastmod>2021-02-03T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
                 <loc>https://chowisely.github.io/2021/01/30/BOJ-2636.html</loc>
                 <lastmod>2021-01-30T11:30:00+09:00</lastmod>
                 <changefreq>weekly</changefreq>
@@ -79,7 +114,7 @@
                 <changefreq>weekly</changefreq>
                 <priority>0.80</priority>
             </url><url>
-                <loc>https://chowisely.github.io/2020/08/22/CompilerTheory-Top-Down-Parsing.html</loc>
+                <loc>https://chowisely.github.io/2020/08/22/CompilerTheory-TopDownParsing.html</loc>
                 <lastmod>2020-08-22T12:30:00+09:00</lastmod>
                 <changefreq>weekly</changefreq>
                 <priority>0.80</priority>
@@ -91,6 +126,26 @@
             </url><url>
                 <loc>https://chowisely.github.io/2020/08/22/CompilerTheory-ChomskyHierarchy.html</loc>
                 <lastmod>2020-08-22T11:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2020/08/20/OS-MemoryManagement1.html</loc>
+                <lastmod>2020-08-20T14:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2020/08/20/OS-Process-Thread.html</loc>
+                <lastmod>2020-08-20T13:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2020/08/20/OS-Interrupt-SystemCall.html</loc>
+                <lastmod>2020-08-20T12:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>https://chowisely.github.io/2020/08/20/OS-Introduction.html</loc>
+                <lastmod>2020-08-20T11:30:00+09:00</lastmod>
                 <changefreq>weekly</changefreq>
                 <priority>0.80</priority>
             </url><url>

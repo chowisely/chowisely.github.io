@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[Operating Systems] Synchronization</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Operating Systems] Synchronization | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[Operating Systems] Synchronization" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="동기화에 대해 알아보자." />
+<meta property="og:description" content="동기화에 대해 알아보자." />
+<link rel="canonical" href="https://chowisely.github.io/2020/09/24/OS-Synchronization.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/09/24/OS-Synchronization.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-24T11:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Operating Systems] Synchronization" />
+<script type="application/ld+json">
+{"url":"https://chowisely.github.io/2020/09/24/OS-Synchronization.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Operating Systems] Synchronization","dateModified":"2020-09-24T11:30:00+09:00","datePublished":"2020-09-24T11:30:00+09:00","description":"동기화에 대해 알아보자.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/09/24/OS-Synchronization.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+  <link href="https://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="알고리즘">알고리즘</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="MST">MST</span>
+        
+            <span class="tag" data-tag="union-find">Union-Find</span>
+        
+            <span class="tag" data-tag="구현">구현</span>
+        
+            <span class="tag" data-tag="이분탐색">이분탐색</span>
+        
+            <span class="tag" data-tag="다익스트라">다익스트라</span>
+        
+            <span class="tag" data-tag="os">OS</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+            <span class="tag" data-tag="compiler">Compiler</span>
+        
+      </div>
+
+    </section>
+
+    <section class="content">
+      <ul class="posts">
+<li class="posts-labelgroup" id="posts-labelgroup">
+  <h1 id="posts-label">posts</h1>
+  
+  <div class="search-container">
+    <div class="search-section">
+      <i class="icon-search"></i>
+      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
+    </div>
+    <div class="search-results" id="search-results" data-placeholder="No Results" style="display: none;"></div>
+  </div>
+  
+</li>
+</ul><div class="post-container">
+  <a class="post-link" href="/2020/09/24/OS-Synchronization.html">
+    <h2 class="post-title">[Operating Systems] Synchronization</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Sep 24, 2020 
+
+6 min to read
+
+
+    </div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="os">OS</span>
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <p>동기화에 대해 알아보자.</p>
+
+<p><strong>병렬성(parallelism)</strong> 과 <strong>병행성(concurrency)</strong>의 개념을 헷갈려하는 사람들이 꽤 있다. <strong>병렬성</strong>은 멀티코어 프로세서에서 각 코어에 하나의 작업을 실행시켜 특정 시간에 두 개 이상의 작업이 실행되고 있는 것을 말한다. 반면 <strong>병행성</strong>은 <em>싱글코어를 기준</em>으로 여러 프로세스들이 매우 짧은 주기로 교체되어 실행되는 것을 말한다. 매우 짧은 시간마다 작업을 번갈아 가며 실행하기 때문에 사용자 입장에서는 여러 작업이 동시에 진행되고 있는 것처럼 보인다. 다시 말하면, 특정 시간에서 병렬성은 두 개 이상의 일, 병행성은 하나의 일을 수행한다.</p>
+
+<p>병행성을 가지는 <strong>병행 프로세스(concurrent process)</strong>는 <strong>독립 프로세스(independent process)</strong>와 <strong>협력 프로세스(cooperating process)</strong>으로 나눌 수 있다. 협력 프로세스는 특정한 목적을 달성하기 위해 다른 프로세스들과 협력한다. 이들은 제한된 컴퓨터 자원의 효율성을 증대하고, 계산 속도를 향상시키지만 자원을 공유하는 데에서 <strong>데이터 불일치(data inconsistency)</strong>를 야기할 수 있다. 따라서 협력 프로세스들이 공유 자원에 접근하는 순서를 조정하는 메커니즘이 필요하다.</p>
+
+<hr />
+
+<h3 id="synchronization">Synchronization</h3>
+<p><strong>동기화(synchronization)</strong>은 <strong>상호 배제(mutual exclusion)</strong>를 위해 실행을 제어하는 메커니즘을 말한다. 상호 배제란 공유 자원에 접근하는 프로세스는 하나만 허용하고 이외의 모든 접근은 차단하는 것이다. 다음 글에서 설명하겠지만 이로 인해 <strong>교착 상태(deadlock)</strong>와 <strong>기아 상태(starvation)</strong>가 발생할 수 있다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>하드웨어 기반 메커니즘</th>
+      <th>소프트웨어 기반 메커니즘</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Test-and-Set, Compare-and-Swap, Mutex Lock</td>
+      <td>Dekker’s Algorithm, Peterson’s Algorithm, Semaphore, Monitor</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="race-condition">Race Condition</h3>
+<p><strong>경쟁 상태(race condition)</strong>은 공유 자원을 여러 프로세스가 동시에 접근하고, 이들이 접근하는 순서에 따라 결과가 달라지는 현상이다.</p>
+
+<p>다음은 <code class="language-plaintext highlighter-rouge">counter++</code>와 <code class="language-plaintext highlighter-rouge">counter--</code>를 컴퓨터 내부적으로 어떻게 실행하는지 나타낸 코드다.</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* counter++ */</span>
+<span class="n">line</span> <span class="mi">1</span><span class="o">:</span> <span class="n">register1</span> <span class="o">=</span> <span class="n">counter</span>
+<span class="n">line</span> <span class="mi">2</span><span class="o">:</span> <span class="n">register1</span> <span class="o">=</span> <span class="n">register1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">line</span> <span class="mi">3</span><span class="o">:</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">register1</span>
+
+<span class="cm">/* counter-- */</span>
+<span class="n">line</span> <span class="mi">4</span><span class="o">:</span> <span class="n">register2</span> <span class="o">=</span> <span class="n">counter</span>
+<span class="n">line</span> <span class="mi">5</span><span class="o">:</span> <span class="n">register2</span> <span class="o">=</span> <span class="n">register2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">line</span> <span class="mi">6</span><span class="o">:</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">register2</span>
+</code></pre></div></div>
+<p>프로그래머는 counter에 1을 증가시키기 위해 단 하나의 문장만 사용한다. 하지만 내부적으로는 2개 이상의 명령어를 실행하는 꼴이다. 두 개의 프로세스 P1과 P2가 간발의 차로 각각 <code class="language-plaintext highlighter-rouge">counter++</code>와 <code class="language-plaintext highlighter-rouge">counter--</code>를 실행하면 어떻게 될까? counter의 초기값을 5라고 하고, P1이 <code class="language-plaintext highlighter-rouge">counter++</code>를 먼저 실행하는 하나의 시나리오는 다음과 같다.</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">P1</span> <span class="n">executes</span> <span class="n">line</span> <span class="mi">1</span><span class="o">:</span> <span class="n">register1</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">P1</span> <span class="n">executes</span> <span class="n">line</span> <span class="mi">2</span><span class="o">:</span> <span class="n">register1</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">P2</span> <span class="n">executes</span> <span class="n">line</span> <span class="mi">4</span><span class="o">:</span> <span class="n">register2</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">P2</span> <span class="n">executes</span> <span class="n">line</span> <span class="mi">5</span><span class="o">:</span> <span class="n">register2</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">P1</span> <span class="n">executes</span> <span class="n">line</span> <span class="mi">3</span><span class="o">:</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">P2</span> <span class="n">executes</span> <span class="n">line</span> <span class="mi">6</span><span class="o">:</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">4</span>
+</code></pre></div></div>
+<p>위 시나리오대로라면 P1은 counter로 6을, P2는 counter로 4를 얻어 다음 실행을 계속할 것이다. 하지만 counter는 동일한 메모리 주소에 저장되어 있는 변수이므로 데이터에 일관성을 유지해야한다.</p>
+
+<hr />
+
+<h3 id="critical-section">Critical Section</h3>
+<p>두 개 이상의 프로세스가 실행 중일 때, 각 프로세스는 <strong>임계 영역(critical solution)</strong>을 가지고 있다. 임계 영역은 코드 상에서 프로세스가 공유 자원을 바꿀 가능성이 있는 부분을 말한다. 동시에 하나의 프로세스만이 임계 영역에 들어갈 수 있다는 보장을 하면, 공유 자원의 데이터 불일치를 해소할 수 있다.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">do</span> <span class="p">{</span>
+  <span class="c1">// entry section</span>
+  <span class="c1">// critical section</span>
+  <span class="c1">// exit section</span>
+  <span class="c1">// remainder section</span>
+<span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></div>
+<p>임계 영역의 전과 후에는 entry section과 exit section이 있다. entry section에서 critical section에 들어가기 위한 요청을 하기 때문에 critical section에는 모든 시간에 단 하나의 프로세스만 접근한다는 보장을 할 수 있다.</p>
+
+<p>임계 영역을 구현하기 위한 메커니즘은 <strong>상호 배제(mutual exclusion)</strong>, <strong>진행(progress)</strong>, <strong>유한 대기(bounded waiting)</strong>이 있다.</p>
+
+<h4 id="mutual-exclusion">Mutual Exclusion</h4>
+<p>어떠한 프로세스가 임계 영역에 있다면, 동시에 다른 프로세스들이 임계 영역에 접근할 수 없도록 막는다.</p>
+
+<h4 id="progress">Progress</h4>
+<p>어떠한 프로세스도 임계 영역에 없으며 임계 영역에 들어가고자 하는 프로세스들이 있다면, 어떤 프로세스를 허용할지 유한 시간 내에 결정해야 한다.</p>
+
+<h4 id="bounded-waiting">Bounded Waiting</h4>
+<p>한 프로세스가 임계 영역에 들어가고자 요청한 후 그 요청이 승인되기 전까지 다른 프로세스들이 임계 영역에 들어갈 수 있는 횟수는 제한되어야 한다. 임계 영역에 들어가고자 무한정 기다리는 상태를 방지하기 위함이다.</p>
+
+<hr />
+
+<h3 id="synchronization-mechanism">Synchronization Mechanism</h3>
+<h4 id="hardware-based-mechanism">Hardware-Based Mechanism</h4>
+<h5 id="mutex">Mutex</h5>
+<p>뮤텍스(mutex)는 스레드가 획득하고 해제할 수 있는 일종의 잠금 기능이 있는 변수다. 한 스레드가 뮤텍스 m에 대한 acquire()을 호출하면 m에 대한 열쇠를 가지게 된다. 만약 다른 스레드가 뮤텍스 m에 대한 열쇠를 지고 있다면 release()가 호출되기 전까지 기다린다. 바쁜 대기(busy wait)를 요한다.</p>
+
+<h4 id="software-based-mechanism">Software-Based Mechanism</h4>
+<h5 id="semaphore">Semaphore</h5>
+<p>뮤텍스보다 더 정교하게 프로세스들을 동기화한다. 임계 구역의 상호 배제를 구현하는 것 외에도 프로세스들의 실행 순서를 제어할 수 있다. 세마포는 정수 값을 가지는 변수다.</p>
+
+<blockquote>
+  <p>🔎 <em>세마포 연산</em></p>
+  <ol>
+    <li>S.wait(): 세마포 S의 값을 1 감소시킨다. S &gt;= 0이면 다음 실행으로 넘어가고, S &lt; 0이면 스레드를 대기 큐에 넣고 블락시킨다.</li>
+    <li>S.signal(): 세마포 S의 값을 1 증가시킨다. S &gt; 0이면 다음 실행으로 넘어가고, S &lt;= 0이면 대기 큐에 있는 스레드 하나를 깨운다.</li>
+  </ol>
+</blockquote>
+
+<p>실행 순서를 제어하는 건 아래 예제들을 참고하자.</p>
+
+<p>Example 1) P1의 S1 -&gt; P2의 S2</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// semaphore 's' initialized to 0</span>
+
+<span class="cm">/* P1 */</span>
+<span class="c1">// do S1</span>
+<span class="n">s</span><span class="p">.</span><span class="n">signal</span><span class="p">()</span>
+
+<span class="cm">/* P2 */</span>
+<span class="n">s</span><span class="p">.</span><span class="n">wait</span><span class="p">()</span>
+<span class="c1">// do S2</span>
+</code></pre></div></div>
+
+<p>Example 2) deposit과 withdraw를 1회씩 번갈아 실행</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// semaphore 'dsem' initialized to 0</span>
+<span class="c1">// semaphore 'wsem' initialized to 0</span>
+
+<span class="cm">/* P1 */</span>
+<span class="n">deposit</span><span class="p">()</span>
+<span class="n">wsem</span><span class="p">.</span><span class="n">signal</span><span class="p">()</span>
+<span class="n">dsem</span><span class="p">.</span><span class="n">wait</span><span class="p">()</span>
+
+<span class="cm">/* P2 */</span>
+<span class="n">wsem</span><span class="p">.</span><span class="n">wait</span><span class="p">()</span>
+<span class="n">withdraw</span><span class="p">()</span>
+<span class="n">dsem</span><span class="p">.</span><span class="n">signal</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h5 id="monitor">Monitor</h5>
+<p>동시에 수행 중인 프로세스 사이에서 ADT(abstract data type)의 안전한 공유를 보장하기 위해 상위 레벨에서 동기화를 구현한 것이 <strong>모니터(monitor)</strong>다. 모니터 내부를 몰라도 상호 배제를 쉽게 구현할 수 있다. 모니터를 활용한 예로는 Java의 Thread 라이브러리에 있는 wait(), notify()가 있다.</p>
+
+<blockquote>
+  <p>🔎 <em>모니터 특징</em></p>
+  <ol>
+    <li>모니터 내에서는 한번에 하나의 프로세스만 활동이 가능하다.</li>
+    <li>프로세스가 모니터 안에서 기다릴 수 있도록 조건 변수를 사용한다.</li>
+    <li>조건 변수의 도입으로 하나 이상의 프로세스가 동일한 모니터에 존재할 수 있다. 조건 변수는 현재 그 조건으로 대기 중인 프로세스들의 큐와 연결되어 있다.</li>
+    <li>조건 변수는 프로시저를 통해서만 접근이 가능하다.</li>
+  </ol>
+</blockquote>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  -->
+
+  <!---->
+  <br><br><br><br>
+</div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->

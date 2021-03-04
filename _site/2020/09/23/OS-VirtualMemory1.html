@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[Operating Systems] Virtual Memory 1</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Operating Systems] Virtual Memory 1 | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[Operating Systems] Virtual Memory 1" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="OS의 가상 메모리 관리 첫번째 편에 대해 알아보자." />
+<meta property="og:description" content="OS의 가상 메모리 관리 첫번째 편에 대해 알아보자." />
+<link rel="canonical" href="https://chowisely.github.io/2020/09/23/OS-VirtualMemory1.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/09/23/OS-VirtualMemory1.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-23T11:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Operating Systems] Virtual Memory 1" />
+<script type="application/ld+json">
+{"url":"https://chowisely.github.io/2020/09/23/OS-VirtualMemory1.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Operating Systems] Virtual Memory 1","dateModified":"2020-09-23T11:30:00+09:00","datePublished":"2020-09-23T11:30:00+09:00","description":"OS의 가상 메모리 관리 첫번째 편에 대해 알아보자.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/09/23/OS-VirtualMemory1.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+  <link href="https://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="알고리즘">알고리즘</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="MST">MST</span>
+        
+            <span class="tag" data-tag="union-find">Union-Find</span>
+        
+            <span class="tag" data-tag="구현">구현</span>
+        
+            <span class="tag" data-tag="이분탐색">이분탐색</span>
+        
+            <span class="tag" data-tag="다익스트라">다익스트라</span>
+        
+            <span class="tag" data-tag="os">OS</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+            <span class="tag" data-tag="compiler">Compiler</span>
+        
+      </div>
+
+    </section>
+
+    <section class="content">
+      <ul class="posts">
+<li class="posts-labelgroup" id="posts-labelgroup">
+  <h1 id="posts-label">posts</h1>
+  
+  <div class="search-container">
+    <div class="search-section">
+      <i class="icon-search"></i>
+      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
+    </div>
+    <div class="search-results" id="search-results" data-placeholder="No Results" style="display: none;"></div>
+  </div>
+  
+</li>
+</ul><div class="post-container">
+  <a class="post-link" href="/2020/09/23/OS-VirtualMemory1.html">
+    <h2 class="post-title">[Operating Systems] Virtual Memory 1</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Sep 23, 2020 
+
+3 min to read
+
+
+    </div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="os">OS</span>
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <p>OS의 가상 메모리 관리 첫번째 편에 대해 알아보자.</p>
+
+<h3 id="background">Background</h3>
+<p>프로그램 전체를 메모리에 올린다고 하더라도 대부분의 프로세스는 할당된 메모리의 일부분만 사용한다. 에러 핸들링 코드나 잘 사용하지 않는 루틴들도 프로그램에 포함되어 있기 때문이다. 그렇기에 사용되는 일부분만 메모리에 올리고 남은 메모리를 다른 프로그램들이 사용할 수 있도록 하는 <strong>가상 메모리(virtual memory)</strong> 개념이 등장했다.</p>
+
+<p>가상 메모리는 사용자와 논리적 주소를 물리적으로 분리하여 사용자가 메인 메모리 용량을 초과한 프로세스에 주소를 지정해서 메모리를 제한 없이 사용할 수 있도록 한다. 이로써 얻는 이익은 <strong>물리적 메모리의 한계</strong>를 극복하고, 동시에 더 많은 프로그램을 적재시켜 <strong>CPU 이용률과 처리량</strong>을 높인다. 또한 프로세스에 할당된 메모리의 크기가 작아지므로 <strong>적재하거나 스왑하는 데 소요되는 시간</strong>이 적게 걸린다. 프로그래머의 입장에는 프로그램을 위한 큰 가상의 메모리를 가진 것처럼 보인다.</p>
+
+<hr />
+
+<h3 id="demand-paging">Demand Paging</h3>
+<p><strong>요구 페이징(demand paging)</strong>은 특정 페이지가 필요할 때 그 페이지를 메모리에 올린다. 페이지가 메모리에 현재 존재하는지를 나타내기 위해 페이지 테이블 엔트리마다 <strong>valid bit</strong>를 둔다. valid bit가 1이면 페이지가 메모리에 존재하고, 0이라면 존재하지 않는다. 페이지 테이블의 크기는 요구 페이징을 사용하더라도 이전과 같고, 단지 valid bit만 추가되었을 뿐이다.</p>
+
+<p>스와핑과 요구 페이징이 메인 메모리의 용량을 극복하는 방법으로 사용된다는 점에서 비슷하지만 차이점이 존재한다. 스와핑은 메모리와 스왑 영역인 backing store 사이에서 <strong>프로세스 단위</strong>로 스왑 인, 스왑 아웃한다. 반면에 요구 페이징은 discontiguous allocation 중에서도 fixed partition에서 사용되는 기법이다. 프로세스를 고정된 크기인 페이지로 자르고, 필요에 따라 메모리와 backing store 사이에서 <strong>페이지 인(page-in)</strong>, <strong>페이지 아웃(page-out)</strong>한다.</p>
+
+<hr />
+
+<h3 id="page-fault">Page Fault</h3>
+<p>참조하고자 하는 페이지가 메모리에 있다면 이전과 같이 페이지 테이블을 참고해 메모리에 접근한다. 하지만 그렇지 않다면 <strong>페이지 부재(page fault)</strong>로 trap이 발생한다.</p>
+
+<blockquote>
+  <p>🔎 <em>페이지 부재 처리 과정</em></p>
+  <ol>
+    <li>CPU가 참조하고자 하는 페이지가 메모리에 있는지 페이지 테이블을 보고 판단한다.</li>
+    <li>페이지 테이블이 없다면 OS에 trap을 발생시킨다.</li>
+    <li>OS는 backing store에 있는 해당 페이지를 메모리에서 빈 프레임을 찾아 올린다.</li>
+    <li>페이지 테이블을 수정한다.</li>
+    <li>실행을 재개한다.</li>
+  </ol>
+</blockquote>
+
+<hr />
+
+<h3 id="copy-on-write">Copy-on-Write</h3>
+<p><strong>쓰기 복사(copy-on-write)</strong>는 부모와 자식 프로세스들이 초기에 같은 페이지를 공유하는 것이다. 여러 프로세스가 동일한 페이지를 사용할 때 별도의 복사본을 만들지 않고 포인터로 공유 페이지를 가리킨다. 임의의 프로세스가 공유 페이지를 수정할 때에만 페이지의 복사본을 만든다.</p>
+
+<hr />
+
+<h3 id="page-replacement">Page Replacement</h3>
+<p>페이지 부재가 발생해 빈 프레임에 페이지를 넣으려고 하지만 더 이상 빈 프레임이 없을 수도 있다. 이럴 때는 <strong>희생 프레임(victim frame)</strong>을 골라서 페이지 아웃하고 새 페이지를 페이지 인한다. 이를 <strong>페이지 대치(page replacement)</strong>라고 한다. 희생 프레임을 고르는 기준에 따라 여러 알고리즘이 있는데 궁극적으로 페이지 부재를 가장 적게 내는 것이 목표다.</p>
+
+<p>디스크와 메모리 사이에서 페이지를 전송하는 시간을 줄이기 위해서 <strong>dirty bit</strong>을 사용한다. 페이지가 메인 메모리에 올라온 이후로 수정되었을 경우에만 dirty bit를 1로 표시한다. 그리고 페이지 아웃 시 dirty bit가 1인 경우에만 페이지를 디스크에 쓴다.</p>
+
+<blockquote>
+  <p>🔎 <em>페이지 대치 과정</em></p>
+  <ol>
+    <li>디스크에서 메모리에 올릴 페이지의 위치를 찾는다.</li>
+    <li>메인 메모리에 빈 프레임을 찾는다.
+2-1. 빈 프레임이 있으면 그것을 사용한다.
+2-2. 빈 프레임이 없다면 페이지 대치 알고리즘을 사용해 희생 프레임을 선정하여 페이지 아웃한다. 희생 프레임의 dirty bit가 1이라면 디스크에 써준다.</li>
+    <li>페이지를 페이지 인하고 페이지 테이블을 수정한다.</li>
+    <li>실행이 중단되었던 시점부터 재개한다.</li>
+  </ol>
+</blockquote>
+
+<h4 id="fifo-algorithm">FIFO Algorithm</h4>
+<p>큐를 사용해 가장 오래된 페이지를 희생 프레임으로 선정한다.</p>
+
+<h4 id="optimal-algorithm">Optimal Algorithm</h4>
+<p>긴 시간 동안 사용되지 않을 페이지를 희생 프레임으로 선정한다. 하지만 이것을 알기가 어렵기 때문에 다른 알고리즘들의 성능을 비교할 때 사용한다.</p>
+
+<h4 id="lru-algorithm">LRU Algorithm</h4>
+<p>참조된 시간이 가장 오래된 페이지를 희생 프레임으로 선정한다. Optimal alogithm이 미래에 기반한 결정을 내린다면 LRU algorithm은 과거에 기반한 결정을 내린다. 메모리를 참조하는 데 <strong>지역성(locality)</strong> 특성이 있기 때문에 가능한 알고리즘이다.</p>
+
+<blockquote>
+  <p>🔎 <em>하드웨어적인 지원</em></p>
+  <ol>
+    <li>Counter: 페이지 테이블 엔트리 마다 카운터를 두고 페이지가 참조될 때마다 시간을 저장한다.</li>
+    <li>Stack: 페이지 번호들을 스택에 담아두고 페이지가 참조되면 해당 페이지를 top으로 이동시킨다.</li>
+    <li>Reference bit: 초기값은 0이며, 페이지가 참조되면 1로 바꾼다.</li>
+  </ol>
+</blockquote>
+
+<h4 id="second-chance-algorithm">Second Chance Algorithm</h4>
+<p>FIFO algorithm에 <strong>reference bit</strong>를 추가한 것이다. 희생 프레임이 될 페이지로 reference bit가 0인 가장 첫번째 페이지를 선정한다. 만약 reference bit가 1이라면 0으로 바꾸고 해당 페이지를 그대로 두고 다른 페이지를 찾는다. 즉, 최근에 참조되었다면 메모리에 살아남을 수 있는 기회를 한번 주는거다.</p>
+
+<h4 id="counting-algorithm">Counting Algorithm</h4>
+<p>페이지 테이블 엔트리에 페이지가 참조되는 수를 기록한다. 어떤 페이지를 희생 프레임으로 선정할 것인지에 따라 LFU algorithm과 MFU algorithm으로 나뉜다.</p>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  -->
+
+  <!---->
+  <br><br><br><br>
+</div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>[Operating Systems] Memory Management 3</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[Operating Systems] Memory Management 3 | 초슬로그 🎯</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="[Operating Systems] Memory Management 3" />
+<meta name="author" content="chowisely" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="OS의 메모리 관리 역할 세번째 편에 대해 알아보자." />
+<meta property="og:description" content="OS의 메모리 관리 역할 세번째 편에 대해 알아보자." />
+<link rel="canonical" href="https://chowisely.github.io/2020/09/22/OS-MemoryManagement2.html" />
+<meta property="og:url" content="https://chowisely.github.io/2020/09/22/OS-MemoryManagement2.html" />
+<meta property="og:site_name" content="초슬로그 🎯" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-22T12:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Operating Systems] Memory Management 3" />
+<script type="application/ld+json">
+{"url":"https://chowisely.github.io/2020/09/22/OS-MemoryManagement2.html","author":{"@type":"Person","name":"chowisely"},"headline":"[Operating Systems] Memory Management 3","dateModified":"2020-09-22T12:30:00+09:00","datePublished":"2020-09-22T12:30:00+09:00","description":"OS의 메모리 관리 역할 세번째 편에 대해 알아보자.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://chowisely.github.io/2020/09/22/OS-MemoryManagement2.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+<script data-ad-client="ca-pub-8676604680506023" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <style type="text/css">
+  a { text-decoration:none }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("[data-tag]").click((e) => {
+        currentTag = e.target.dataset.tag;
+        filterByTagName(currentTag);
+      });
+
+      let currentTag = "";
+      const queryTag = getQuery().tag;
+      if (queryTag) {
+        currentTag = queryTag;
+        filterByTagName(currentTag)
+      }
+    });
+  </script>
+  <link href="https://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/profile1.png" alt="chowisely" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">chowisely</a>
+      </h2>
+      </div><p class="tagline">undergraduate in CS</p><p class="motto">honesty integrity excellence</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+
+      <div class="tag-collections">
+        
+            <span class="tag" data-tag="알고리즘">알고리즘</span>
+        
+            <span class="tag" data-tag="sort">Sort</span>
+        
+            <span class="tag" data-tag="greedy">Greedy</span>
+        
+            <span class="tag" data-tag="dfs">DFS</span>
+        
+            <span class="tag" data-tag="bfs">BFS</span>
+        
+            <span class="tag" data-tag="MST">MST</span>
+        
+            <span class="tag" data-tag="union-find">Union-Find</span>
+        
+            <span class="tag" data-tag="구현">구현</span>
+        
+            <span class="tag" data-tag="이분탐색">이분탐색</span>
+        
+            <span class="tag" data-tag="다익스트라">다익스트라</span>
+        
+            <span class="tag" data-tag="os">OS</span>
+        
+            <span class="tag" data-tag="architecture">Architecture</span>
+        
+            <span class="tag" data-tag="algorithm">Algorithm</span>
+        
+            <span class="tag" data-tag="compiler">Compiler</span>
+        
+      </div>
+
+    </section>
+
+    <section class="content">
+      <ul class="posts">
+<li class="posts-labelgroup" id="posts-labelgroup">
+  <h1 id="posts-label">posts</h1>
+  
+  <div class="search-container">
+    <div class="search-section">
+      <i class="icon-search"></i>
+      <input type="text" name="search" id="searchbar" autocomplete="off" aria-label="search in posts">
+    </div>
+    <div class="search-results" id="search-results" data-placeholder="No Results" style="display: none;"></div>
+  </div>
+  
+</li>
+</ul><div class="post-container">
+  <a class="post-link" href="/2020/09/22/OS-MemoryManagement2.html">
+    <h2 class="post-title">[Operating Systems] Memory Management 3</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date">
+      <i class="icon-calendar"></i>Sep 22, 2020 
+
+5 min to read
+
+
+    </div><ul class="post-tags">
+      
+        
+          
+              <span class="tag" data-tag="os">OS</span>
+          
+        
+      
+    </ul></div>
+  <div class="post">
+    <p>OS의 메모리 관리 역할 세번째 편에 대해 알아보자.</p>
+
+<h3 id="paging-issues">Paging Issues</h3>
+<p>이전 글에서 다루었던 페이징의 개념에 이어 페이징과 관련된 이슈를 살펴보자.</p>
+
+<h4 id="frame-size">Frame Size</h4>
+<p>페이징의 문제점은 internal fragmentation이 생긴다는 것이다. 그럼 internal fragmentation 문제를 최소화하려면 페이지의 크기를 무작정 줄이면 될까? 답은 아니다. <strong>페이지의 크기가 작아질수록 페이지 테이블의 크기가 커진다.</strong> 그리고 페이지 테이블은 메모리에 존재하기 때문에 페이지 테이블이 커질수록 메모리도 많이 사용하게 된다. 시간이 지남에 따라 페이지의 크기가 커지고 있지만, 너무 크지도 작지도 않은 적정한 크기를 사용하는 것이 중요하다.</p>
+
+<h4 id="page-table">Page Table</h4>
+<p>페이지 테이블은 메인 메모리엔 존재한다. 따라서 CPU가 메모리에 접근하려고 하면 메모리 접근 과정을 <strong>2번</strong> 거친다. 한번은 페이지 테이블 접근할 때이고, 다른 한번은 논리적 주소를 물리적 주소로 변환 후 메모리 접근할 때다. CPU는 굉장히 빠르기 때문에 메모리에 한번 접근하는 시간은 CPU의 입장에서 굉장히 길다. 그렇기에 최대한 메모리의 접근을 피해야 한다. 여기서 바로 TLB가 나왔다.</p>
+
+<h4 id="tlbtranslation-look-aside-buffer">TLB(Translation Look-Aside Buffer)</h4>
+<p>TLB는 하드웨어 캐시의 일종으로 메모리 계층 구조에서 CPU와 메모리 사이에 존재한다. CPU 레지스터에 두면 속도는 빠르지만 레지스터의 개수가 매우 제한적이라 큰 크기의 페이지 테이블을 담지 못한다. 그리고 위에서 말했듯 메모리에 두면 크기 제한에서는 자유로우나 CPU로부터의 접근 시간이 길다. 따라서 페이지 테이블의 일부를 TLB라는 캐시에 저장한다.</p>
+
+<blockquote>
+  <p>🔎 <em>Address Translation with TLB</em></p>
+  <ol>
+    <li>페이지 번호가 3, 오프셋이 5인 논리적 주소가 있다.</li>
+    <li>TLB에서 페이지 번호가 3인 엔트리를 찾는다.
+2-1. 엔트리가 존재한다면, 프레임 번호를 가져와 오프셋을 더한다. (TLB hit)
+2-2. 엔트리가 없다면, 메모리에 있는 페이지 테이블에 접근해 해당 페이지 번호와 프레임 번호를 TLB에 넣는다. 곧바로 TLB에 다시 접근한다. (TLB miss)</li>
+    <li>물리적 주소를 이용해 메모리에 접근한다.</li>
+  </ol>
+</blockquote>
+
+<h4 id="effective-access-time-eat">Effective Access Time (EAT)</h4>
+<p>페이징과 TLB를 사용하여 메모리에 접근하는 시간을 EAT라고 하며 다음 식으로 구할 수 있다.
+<strong><code class="language-plaintext highlighter-rouge">EAT = cache hit ratio * (TLB lookup + mapped memory access) + cache miss ratio * (TLB lookup + page table memory access + mapped memory access)</code></strong></p>
+
+<p>Cache hit ratio = 80 %
+Time taken for TLB search = 2ns
+Time taken for memory access = 100ns
+위와 같은 조건이 주어졌을 때 EAT는 0.8 * (2ns + 100ns) + (1 - 0.8) * (2ns + 100ns + 100ns) = 130ns가 된다.</p>
+
+<hr />
+
+<h3 id="page-table-structure">Page Table Structure</h3>
+
+<h4 id="hierarchical-page-table">Hierarchical Page Table</h4>
+<p>논리적 주소가 커질수록 페이지 테이블의 크기도 증가해서 메모리에 더 큰 공간이 필요하다. 32비트 주소 공간은 4GB(2^32)를 메모리로 사용할 수 있다. 만약 페이지의 크기가 4KB(2^12)라면 페이지 테이블의 개수는 4GB/4KB = 1,048,576개다. 32비트 주소 공간이므로 페이지 테이블을 저장하기 위해 필요한 메모리는 1,048,576 * 32비트 = 4MB이다. 이 문제는 논리적 주소 공간을 여러 개의 페이지 테이블로 나누어 해결한다. 즉, <strong>페이지 테이블을 페이지화</strong>한다. 위의 예제에서 페이지 번호를 나타내는 20비트를 10비트씩 나누어 페이지 테이블을 페이지화하면 테이블을 위한 메모리 공간이 훨씬 줄어든다.</p>
+
+<h5 id="two-level-page-table">Two-Level Page Table</h5>
+<blockquote>
+  <p>🔎 <em>Address Translation</em>
+첫번째 페이지 번호에 해당하는 엔트리는 두번째 테이블를 가리킨다. 그리고 두번째 페이지 번호에 해당하는 엔트리는 프레임 번호를 가진다.</p>
+</blockquote>
+
+<p>예를 들어 32비트 주소 공간이 있고, 첫번째 페이지 테이블(outer)은 10비트,  두번째 페이지 테이블(inner)은 12비트, 오프셋은 10비트을 사용하고 각각은 3, 7, 10의 값을 가진다고 하자. 첫번째 테이블의 인덱스 3에 F1라는 값이 있다. F1은 두번째 테이블의 위치를 가리킨다. 두번째 테이블 F1에서 인덱스 7에 20이라는 값이 있다. 따라서 최종적인 주소는 10 * 2^10 + 20이 된다.</p>
+
+<h4 id="hashed-page-table">Hashed Page Table</h4>
+<p>해싱을 사용한 테이블은 연결 리스트로 이루어져 있으며, 각 엔트리는 가상 페이지 번호, 프레임 번호, 다음 리스트를 가리키는 포인터로 구성된다. 페이지 번호를 해싱하고 해당하는 값을 가진 연결 리스트로 이동하여 연결 요소들의 가상 페이지 번호와 비교하는 작업을 거친다. 해싱은 O(1), 연결 리스트를 검색하는 데는 O(n)의 시간이 걸린다.</p>
+
+<h4 id="inverted-page-table">Inverted Page Table</h4>
+<p>보통 프로세스들은 자신에게 할당된 페이지들을 전부 사용하는 경우가 드물다. 그렇기에 한 프로세스마다 하나의 페이지 테이블을 만드는 것이 아니라 메모리 전체에 거대한 페이지 테이블을 만들 수 있다. 논리적 주소는 프로세스에 대한 정보, 가상 주소, 오프셋으로, 페이지 테이블의 엔트리는 그 페이지를 소유하고 있는 프로세스에 대한 정보와 가상 주소로 이루어져 있다. 따라서 거대한 페이지 테이블을 훑으며 프로세스에 대한 정보와 가상 주소가 일치하는 엔트리를 찾으면, 그 엔트리의 <strong>인덱스가 프레임 번호</strong>가 된다.</p>
+
+<p>페이지 테이블은 물리적 주소에 의해 정렬되어 있고 엔트리를 찾을 때 가상 주소를 사용한다. 이 때문에 페이지 테이블에 저장하는 메모리 공간은 줄일 수 있지만 테이블을 검색하는 시간은 증가한다.</p>
+
+<hr />
+
+<h3 id="memory-protection">Memory Protection</h3>
+
+<h4 id="protection-bit">Protection Bit</h4>
+<p>모든 메모리 접근은 페이지 테이블을 경유한다. 따라서 페이지 테이블 엔트리마다 protection bit인 r(readable), w(writable), x(executable)을 둔다면 해당 프레임에 대한 접근을 제어할 수 있다.</p>
+
+<h4 id="valid-bit">Valid Bit</h4>
+<p>페이지 테이블 엔트리마다 valid bit를 두어 해당 프레임에 페이지가 들어 있는지 혹은 유효한 페이지인지 나타낸다.</p>
+
+<hr />
+
+<h3 id="memory-sharing">Memory Sharing</h3>
+<p>프로세스들 사이에서 공통된 코드를 공유할 수 있다. 페이징에서는 프로세스를 연속적인 주소 공간에 할당하는 것이 아니므로 여러 프로세스가 하나의 페이지에 접근할 수 있다. 하지만 이 코드들은 반드시 읽기 전용(reentrant)이어야 한다. 시분할 시스템에서 유용하다.</p>
+
+<hr />
+
+<h3 id="paging-vs-segmentation">Paging vs. Segmentation</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>특징</th>
+      <th>페이징</th>
+      <th>세그멘테이션</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>partition</td>
+      <td>고정된 길이</td>
+      <td>가변적인 길이</td>
+    </tr>
+    <tr>
+      <td>프로세스를 자르는 기준</td>
+      <td>비논리적 단위(일정한 크기)</td>
+      <td>논리적 단위</td>
+    </tr>
+    <tr>
+      <td>테이블</td>
+      <td>페이징 테이블</td>
+      <td>세그먼트 테이블</td>
+    </tr>
+    <tr>
+      <td>문제</td>
+      <td>internal fragmentation</td>
+      <td>external fragmentation</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>세그멘테이션은 논리적 단위로 프로세스를 나누기 때문에 <strong>protection과 sharing 측면</strong>에서 페이징보다 낫다. 하지만 <strong>external fragmentatin의 문제</strong>가 있어 둘을 절충하여 <strong>paged segmentation</strong>을 쓸 수도 있다. 하지만 논리적 주소를 물리적 주소로 바꾸기 위해 세그먼트 테이블과 페이지 테이블을 두번 거쳐 주소 변환에 시간이 다소 소요된다.</p>
+
+  </div>
+
+  <!--
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <div align="center" style="margin: 1em 0;">
+  <ins class="adsbygoogle"
+       style="display:block; border-bottom: initial;"
+       data-ad-client="ca-pub-8676604680506023"
+       data-ad-format="auto"></ins>
+  </div>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  -->
+
+  <!---->
+  <br><br><br><br>
+</div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/chowisely" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SGMF6NV0B4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-SGMF6NV0B4');
+  </script>
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+
+  <script src="/assets/js/tags.js"></script>
+</body>
+
+</html>
+
+<!--
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div align="center" style="margin: 1em 0;">
+<ins class="adsbygoogle"
+     style="display:block; border-bottom: initial;"
+     data-ad-client="ca-pub-8676604680506023"
+     data-ad-format="auto"></ins>
+</div>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->
